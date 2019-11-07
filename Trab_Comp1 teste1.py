@@ -155,8 +155,8 @@ class Dicionario(tk.Frame):
         label = tk.Label(self, width=40, height= 3, text="Dicionário", font= LARGE_FONT).pack(pady=10,padx=10)
 
         btn1 = tk.Button(self, width=40, height=3, text="Consultar Dicionário",                                                         command=lambda: controller.show_frame(C_D)).pack()
-        btn2 = tk.Button(self, width=40, height=3, text="Adicionar Palavra",                                                            command=lambda: controller.show_frame(A_P)).pack()
-        btn3 = tk.Button(self, width=40, height=3, text="Excluir Palavra",                                                              command=lambda: controller.show_frame(E_P)).pack()
+        btn2 = tk.Button(self, width=40, height=3, text="Adicionar Palavra").pack()
+        btn3 = tk.Button(self, width=40, height=3, text="Excluir Palavra").pack()
         btn_saida = tk.Button(self, width=15, text="Anterior",                                                                          command=lambda: controller.show_frame(Home)).pack (side="bottom", anchor="sw")
 
 # Consultar Dicionário #
