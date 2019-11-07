@@ -20,7 +20,7 @@ class Master(tk.Tk):
 
         self.frames = {}
 # AQUI É SÓ COLOCAR NESSE FOR SE QUISER ADICIONAR UMA PÁGINA NOVA
-        for F in (Home, A_D_J, M_D_J, O_P_F, O_NP_F, Ajuda, P_F, Creditos, Colaboradores, Agradecimentos, R_B, Iniciar_al, Iniciar_fac, Iniciar_med, Iniciar_dif, Dificuldade):
+        for F in (Home, A_D_J, M_D_J, O_P_F, O_NP_F, Ajuda, P_F, Creditos, Colaboradores, Agradecimentos, R_B, Iniciar_al, Iniciar_fac, Iniciar_med, Iniciar_dif, Dificuldade, Dicionario, C_D, pal_pad, pad_al, pad_fac, pad_med, pad_dif, pal_add, add_al, add_fac, add_med, add_dif):
 
             frame = F(container, self)
 
@@ -48,8 +48,8 @@ class Home(tk.Frame):
         label = tk.Label(self, width=40, height= 3, text="Jogo da Forca", font=LARGE_FONT).pack(pady=10,padx=10)
 
         btn1 = tk.Button(self, width=40, height=3, text="Apresentação do jogo",                                                                                  command=lambda: controller.show_frame(A_D_J)).pack()
-        btn2 = tk.Button(self, width=40, height=3, text="Iniciar",                                                                                        command=lambda: controller.show_frame(Iniciar_al)).pack()
-        btn3 = tk.Button(self, width=40, height=3, text="Dicionário de palavras").pack()                                                                         
+        btn2 = tk.Button(self, width=40, height=3, text="Iniciar",                                                                                               command=lambda: controller.show_frame(Iniciar_al)).pack()
+        btn3 = tk.Button(self, width=40, height=3, text="Dicionário de palavras",                                                                                command=lambda: controller.show_frame(Dicionario)).pack()
         btn4 = tk.Button(self, width=40, height=3, text="Ajuda",                                                                                                 command=lambda: controller.show_frame(Ajuda)).pack()
         btn5 = tk.Button(self, width=40, height=3, text="Créditos",                                                                                              command=lambda: controller.show_frame(Creditos)).pack()
 
@@ -96,6 +96,7 @@ class O_NP_F(tk.Frame):
 
         btn_saida = tk.Button(self, width=15, text="Anterior",                                                                         command=lambda: controller.show_frame(A_D_J)).pack (side="bottom", anchor="sw")
 
+# Jogar #
 
 # INICIAR #
 class Iniciar_al(tk.Frame):
@@ -148,13 +149,142 @@ class Dificuldade(tk.Frame):
 
 
 # DICIONARIO #
-                          
+class Dicionario(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        label = tk.Label(self, width=40, height= 3, text="Dicionário", font= LARGE_FONT).pack(pady=10,padx=10)
+
+        btn1 = tk.Button(self, width=40, height=3, text="Consultar Dicionário",                                                         command=lambda: controller.show_frame(C_D)).pack()
+        btn2 = tk.Button(self, width=40, height=3, text="Adicionar Palavra",                                                            command=lambda: controller.show_frame(A_P)).pack()
+        btn3 = tk.Button(self, width=40, height=3, text="Excluir Palavra",                                                              command=lambda: controller.show_frame(E_P)).pack()
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                          command=lambda: controller.show_frame(Home)).pack (side="bottom", anchor="sw")
+
+# Consultar Dicionário #
+class C_D(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        label = tk.Label(self, width=40, height= 3, text="Consultar Dicionário", font= LARGE_FONT).pack(pady=10,padx=10)
+
+        btn1 = tk.Button(self, width=40, height=3, text="Palavras Padrão",                                                          command=lambda: controller.show_frame(pal_pad)).pack()
+        btn2 = tk.Button(self, width=40, height=3, text="Palavras Adicionadas",                                                     command=lambda: controller.show_frame(pal_add)).pack()
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                      command=lambda: controller.show_frame(Home)).pack(side="bottom", anchor="sw")
+
+# Bloco palavras padrão #
+class pal_pad(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        label = tk.Label(self, width=40, height=3, text="Palavras Padrão", font= LARGE_FONT).pack(pady=10, padx=10)
+
+        btn1 = tk.Button(self, width=40, height=3, text="Categoria Aleatória",                                                         command=lambda: controller.show_frame(pad_al)).pack()
+        btn2 = tk.Button(self, width=40, height=3, text="Categoria Fácil",                                                             command=lambda: controller.show_frame(pad_fac)).pack()
+        btn3 = tk.Button(self, width=40, height=3, text="Categoria Média",                                                             command=lambda: controller.show_frame(pad_med)).pack()
+        btn4 = tk.Button(self, width=40, height=3, text="Categoria Difícil",                                                           command=lambda: controller.show_frame(pad_dif)).pack()
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                          command=lambda: controller.show_frame(C_D)).pack(side="bottom", anchor="sw")
+
+# Aleatórias #
+class pad_al(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        label = tk.Label(self, width=40, height=3, text="Palavras Padrão", font= LARGE_FONT).pack(pady=10, padx=10)
+
+        f = open("pad_al.txt", "r").read()
+        lb = tk.Label(self, text = f).pack()                                  
+
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                  command=lambda: controller.show_frame(pal_pad)).pack(side="bottom", anchor="sw")
+# Fácil #
+class pad_fac(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        label = tk.Label(self, width=40, height=3, text="Palavras Padrão", font= LARGE_FONT).pack(pady=10, padx=10)
+
+        f = open("pad_fac.txt", "r").read()
+        lb = tk.Label(self, text = f).pack()                                  
+
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                  command=lambda: controller.show_frame(pal_pad)).pack(side="bottom", anchor="sw")
+# Média #
+class pad_med(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        label = tk.Label(self, width=40, height=3, text="Palavras Padrão", font= LARGE_FONT).pack(pady=10, padx=10)
+
+        f = open("pad_med.txt", "r").read()
+        lb = tk.Label(self, text = f).pack()                                  
+
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                  command=lambda: controller.show_frame(pal_pad)).pack(side="bottom", anchor="sw")
+
+# Dificil #
+class pad_dif(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        label = tk.Label(self, width=40, height=3, text="Palavras Padrão", font= LARGE_FONT).pack(pady=10, padx=10)
+
+        f = open("pad_dif.txt", "r").read()
+        lb = tk.Label(self, text = f).pack()                                  
+
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                  command=lambda: controller.show_frame(pal_pad)).pack(side="bottom", anchor="sw")
+
+# Bloco palavras adicionadas #
+class pal_add(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        label = tk.Label(self, width=40, height=3, text="Categoria Aleatória", font= LARGE_FONT).pack(pady=10, padx=10)
+
+        btn1 = tk.Button(self, width=40, height=3, text="Categoria Aleatória",                                                         command=lambda: controller.show_frame(add_al)).pack()
+        btn2 = tk.Button(self, width=40, height=3, text="Categoria Fácil",                                                             command=lambda: controller.show_frame(add_fac)).pack()
+        btn3 = tk.Button(self, width=40, height=3, text="Categoria Média",                                                             command=lambda: controller.show_frame(add_med)).pack()
+        btn4 = tk.Button(self, width=40, height=3, text="Categoria Difícil",                                                           command=lambda: controller.show_frame(add_dif)).pack()
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                          command=lambda: controller.show_frame(Home)).pack (side="bottom", anchor="sw")
+
+# Aleatorio #
+class add_al(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        label = tk.Label(self, width=40, height=3, text="Palavras Padrão", font= LARGE_FONT).pack(pady=10, padx=10)
+
+        f = open("add_al.txt", "r").read()
+        lb = tk.Label(self, text = f).pack()                                  
+
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                  command=lambda: controller.show_frame(pal_add)).pack(side="bottom", anchor="sw")
+
+# Facil #
+class add_fac(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        label = tk.Label(self, width=40, height=3, text="Palavras Adicionadas", font= LARGE_FONT).pack(pady=10, padx=10)
+
+        f = open("add_fac.txt", "r").read()
+        lb = tk.Label(self, text = f).pack()
+
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                  command=lambda: controller.show_frame(pal_add)).pack(side="bottom", anchor="sw")
+
+# Media #
+
+class add_med(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        label = tk.Label(self, width=40, height=3, text="Palavras Adicionadas", font= LARGE_FONT).pack(pady=10, padx=10)
+
+        f = open("add_med.txt", "r").read()
+        lb = tk.Label(self, text = f).pack()
+
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                  command=lambda: controller.show_frame(pal_add)).pack(side="bottom", anchor="sw")
+
+# Dificil #
+class add_dif(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        label = tk.Label(self, width=40, height=3, text="Palavras Adicionadas", font= LARGE_FONT).pack(pady=10, padx=10)
+
+        f = open("add_dif.txt", "r").read()
+        lb = tk.Label(self, text = f).pack()
+
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                  command=lambda: controller.show_frame(pal_add)).pack(side="bottom", anchor="sw")
 
 # Ajuda #
 class Ajuda(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        label = tk.Label(self, width=40, height= 3, text="Ajuda", font=LARGE_FONT).pack(pady=10,padx=10)
+        label = tk.Label(self, width=40, height= 3, text="Ajuda", font= LARGE_FONT).pack(pady=10,padx=10)
         
         btn = tk.Button(self, width=40, height=3, text="Perguntas Frequentes",                                               command=lambda: controller.show_frame(P_F)).pack()
         btn_saida = tk.Button(self, width=15, text="Anterior",                                                                        command=lambda: controller.show_frame(Home)).pack (side="bottom", anchor="sw")
