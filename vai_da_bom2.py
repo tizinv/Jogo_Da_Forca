@@ -19,25 +19,32 @@ def exclui_fac(palavra):
     arq = tira_n_line(arq)
     print (arq)
     ifpop = False
-
-    for i in range(len(arq)):
+    size = len(arq)
+    cont = 0
+    while cont < size:
         
-        if compararString(arq[i],palavra) == True:
-            removido = arq.pop(i)
+        if compararString(arq[cont],palavra) == True:
+            removido = arq.pop(cont)
             print(arq)
-            
+            size -= 1
             ifpop = True
-    for i in arq:
+            
+        cont += 1    
+    for i in range(len(arq)):
         arq[i] += '\n'
-        
+    
     print (arq)
-    exclui(ifpop)
+    file1.close()
+    exclui(ifpop,arq)
 
-def exclui(ifpop):
+def exclui(ifpop,arq):
     file = open("add_fac.txt","w")
     if ifpop == True:
-        file.write(arq)
+        for i in range(len(arq)):
+            
+            file.write(arq[i])
         print("Palavra excluida.")
+
   
     else:
         print("Palavra nao existe para ser excluida.")
