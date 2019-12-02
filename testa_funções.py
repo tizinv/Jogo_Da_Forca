@@ -1,98 +1,305 @@
+def main_dic(): #função pra teste, fiz apenas pra palavras faceis
+    palavra = input("Insira a palavra: ")
+    palavra = palavra.lower()
+    print("1 para fácil \t 2 para medio \t 3 para dificil", end ='\t')
+    recebe = int(input(':'))
+    if recebe == 1:
+        opt = int(input("Digite 1 se deseja adicionar ou 2 se deseja excluir: "))
+        if opt == 1:
+            insere_al(palavra)
+            insere_fac(palavra)
+        else:
+            exclui_al(palavra)
+            exclui_fac(palavra)
+    elif recebe == 2:
+        opt = int(input("Digite 1 se deseja adicionar ou 2 se deseja excluir: "))
+        if opt == 1:
+            insere_al(palavra)
+            insere_med(palavra)
+        else:
+            exclui_al(palavra)
+            exclui_med(palavra)
+    elif recebe == 3:
+        opt = int(input("Digite 1 se deseja adicionar ou 2 se deseja excluir: "))
+        if opt == 1:
+            insere_al(palavra)
+            insere_dif(palavra)
+        else:
+            exclui_al(palavra)
+            exclui_dif(palavra)
 
+    test = int(input("Deseja continuar? Digite 1 pra sim e 2 pra não: "))
+    if test == 1:
+        main_dic()
 
+###################################################################
+###################################################################
+        
+def exclui_al(palavra):
+    file = open("add_al.txt","r")
+    
+    arq = transfLista(file)
+    print (arq)
+    arq = tira_n_line(arq)
+    print (arq)
+    ifpop = False
+    size = len(arq)
+    cont = 0
+    while cont < size:
+        
+        if compararString(arq[cont],palavra) == True:
+            removido = arq.pop(cont)
+            print(arq)
+            size -= 1
+            ifpop = True
+            
+        cont += 1    
+    for i in range(len(arq)):
+        arq[i] += '\n'
+    
+    print (arq)
+    file.close()
+    exclui0(ifpop,arq)
+
+def exclui0(ifpop,arq):
+    file = open("add_al.txt","w")
+    if ifpop == True:
+        for i in range(len(arq)):
+            
+            file.write(arq[i])
+        print("Palavra excluida das aleatórias.")
+
+  
+    else:
+        print("Palavra nao existe nas aleatórias para ser excluida.")
+        
+def exclui_fac(palavra):
+    file = open("add_fac.txt","r")
+    
+    arq = transfLista(file)
+    print (arq)
+    arq = tira_n_line(arq)
+    print (arq)
+    ifpop = False
+    size = len(arq)
+    cont = 0
+    while cont < size:
+        
+        if compararString(arq[cont],palavra) == True:
+            removido = arq.pop(cont)
+            print(arq)
+            size -= 1
+            ifpop = True
+            
+        cont += 1    
+    for i in range(len(arq)):
+        arq[i] += '\n'
+    
+    print (arq)
+    file.close()
+    exclui1(ifpop,arq)
+
+def exclui1(ifpop,arq):
+    file = open("add_fac.txt","w")
+    if ifpop == True:
+        for i in range(len(arq)):
+            
+            file.write(arq[i])
+        print("Palavra excluida das fáceis.")
+
+  
+    else:
+        print("Palavra nao existe nas fáceis para ser excluida.")
+
+def exclui_med(palavra):
+    file = open("add_med.txt","r")
+    
+    arq = transfLista(file)
+    print (arq)
+    arq = tira_n_line(arq)
+    print (arq)
+    ifpop = False
+    size = len(arq)
+    cont = 0
+    while cont < size:
+        
+        if compararString(arq[cont],palavra) == True:
+            removido = arq.pop(cont)
+            print(arq)
+            size -= 1
+            ifpop = True
+            
+        cont += 1    
+    for i in range(len(arq)):
+        arq[i] += '\n'
+    
+    print (arq)
+    file.close()
+    exclui2(ifpop,arq)
+
+def exclui2(ifpop,arq):
+    file = open("add_med.txt","w")
+    if ifpop == True:
+        for i in range(len(arq)):
+            
+            file.write(arq[i])
+        print("Palavra excluida das médias.")
+
+  
+    else:
+        print("Palavra nao existe nas médias para ser excluida.")
+
+def exclui_dif(palavra):
+    file = open("add_dif.txt","r")
+    
+    arq = transfLista(file)
+    print (arq)
+    arq = tira_n_line(arq)
+    print (arq)
+    ifpop = False
+    size = len(arq)
+    cont = 0
+    while cont < size:
+        
+        if compararString(arq[cont],palavra) == True:
+            removido = arq.pop(cont)
+            print(arq)
+            size -= 1
+            ifpop = True
+            
+        cont += 1    
+    for i in range(len(arq)):
+        arq[i] += '\n'
+    
+    print (arq)
+    file.close()
+    exclui3(ifpop,arq)
+
+def exclui3(ifpop,arq):
+    file = open("add_dif.txt","w")
+    if ifpop == True:
+        for i in range(len(arq)):
+            
+            file.write(arq[i])
+        print("Palavra excluida nas difíceis.")
+
+  
+    else:
+        print("Palavra nao existe nas difíceis para ser excluida.")
+
+###############################################################
+###############################################################
+def insere_al(palavra): #verifica se existe ou não a palavra no dicionário#
+    
+    file1 = open("add_al.txt","a")
+    
+    if verif_al(palavra) == False:
+        file1.write(palavra+'\n')
+        print("Palavra adicionada nos aleatórios.") 
+    else:
+        print("A palavra já existe nos aleatórios.")
+
+    file1.close()
+        
 def insere_fac(palavra): #verifica se existe ou não a palavra no dicionário#
     
-    file1 = open("add_fac.txt","r+")
+    file1 = open("add_fac.txt","a")
     
     if verif_fac(palavra) == False:
-        file1.write('\n'+palavra)
+        file1.write(palavra+'\n')
+        print("Palavra adicionada nas fáceis.") 
     else:
-        print("A palavra já existe nos fáceis.")
+        print("A palavra já existe nas fáceis.")
 
     file1.close()
 
-
-
-def tira_n_line(myString): #tira o \n do final da linha#
-    if myString[len(myString)-1] == "\n":
-        myString = myString[:-1]
-
-    return myString
+def insere_med(palavra): #verifica se existe ou não a palavra no dicionário#
     
+    file1 = open("add_med.txt","a")
+    
+    if verif_med(palavra) == False:
+        file1.write(palavra+'\n')
+        print("Palavra adicionada nas médias.") 
+    else:
+        print("A palavra já existe nas médias.")
+
+    file1.close()
+    
+def insere_dif(palavra): #verifica se existe ou não a palavra no dicionário#
+    
+    file1 = open("add_dif.txt","a")
+    
+    if verif_dif(palavra) == False:
+        file1.write(palavra+'\n')
+        print("Palavra adicionada nas difíceis.") 
+    else:
+        print("A palavra já existe nas difíceis.")
+
+    file1.close()
         
-        
-#def verif_al(palavra):
-#    file = open("add_al.txt","r")
-#    arq = transfLista(file)
-#    for i in arq:
-#        if compararString(i,palavra)== False:
-#            return False
-#        else:
-#            return True
-#    file.close()
+def verif_al(palavra):
+    file = open("add_al.txt","r")
+    arq = transfLista(file)
+    for elem in range(len(arq)):
+        arq[elem] = arq[elem].strip()
+    for i in arq:
+        if compararString(i,palavra) == True:
+            file.close()
+            return True
+    return False
 
 def verif_fac(palavra):    
     file = open("add_fac.txt","r")
     arq = transfLista(file)
-
     for elem in range(len(arq)):
-        arq[elem] = tira_n_line(arq)
-        
+        arq[elem] = arq[elem].strip()
     for i in arq:
-        if compararString(i,palavra)== False:
-            return False
-        else:
+        if compararString(i,palavra) == True:
+            file.close()
             return True
-    file.close()
+    return False
 
+def verif_med(palavra):
+    file = open("add_med.txt","r")
+    arq = transfLista(file)
+    for elem in range(len(arq)):
+        arq[elem] = arq[elem].strip()
+    for i in arq:
+        if compararString(i,palavra) == True:
+            file.close()
+            return True
+    return False
 
-#def verif_med(palavra):
-#    file = open("add_med.txt","r")
-#    arq = transfLista(file)
-#    for i in arq:
-#        if compararString(i,palavra)== False:
-#            return False
-#        else:
-#            return True
-#    file.close()
+def verif_dif(palavra):
+    file = open("add_dif.txt","r")
+    arq = transfLista(file)
+    for elem in range(len(arq)):
+        arq[elem] = arq[elem].strip()
+    for i in arq:
+        if compararString(i,palavra) == True:
+            file.close()
+            return True
+    return False
 
-#def verif_dif(palavra):
-#    file = open("add_dif.txt","r")
-#    arq = transfLista(file)
-#    
-#    for i in arq:
-#        if compararString(i,palavra)== False:
-#            return False
-#        else:
-#            return True
-#    file.close()
-    
-def main(): #função pra teste, fiz apenas pra palavras faceis
-    palavra = input("Insira qual palavra deseja adicionar: ")
-    palavra = palavra.lower()
-    #print("1 para fácil \t 2 para medio \t 3 para dificil")
-    
-    insere_fac(palavra)
+#####################################################################
+#####################################################################
 
-    test = int(input("Deseja continuar? Digite 1 pra sim e 2 pra não: "))
-    if test == 1:
-        main()
-    
+def tira_n_line(arq): #tira o \n do final da linha#
+    for elem in range(len(arq)):
+        arq[elem] = arq[elem].strip()
+    return arq    
         
 def compararString(i, palavra): #compara string recebida pelo usuário com o elemento da lista#
-    if len(i) > len(palavra) or len(i) < len(palavra):
-        return False
-    else:
-        for char in range (len(i)):
-            if i[char] != palavra[char]:
-                return False
-
-        return True
-        
+  if i == palavra:
+    compara = True
+  else:
+    compara = False
+  return compara    
                 
     
 def transfLista(arq): #transforma as linhas em elementos de uma lista#
+    
+    arq.seek(0,0)
     arq = arq.readlines()
     return arq
-main()
-
+main_dic()
