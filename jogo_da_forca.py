@@ -1,7 +1,9 @@
 import tkinter as tk
-from funcoes import main
+from funcoes import *
 # LIMPEZA
 LARGE_FONT= ("Verdana", 18)
+
+
 
 ################################################
 ############### CLASSE (MASTER) ################
@@ -20,7 +22,7 @@ class Master(tk.Tk):
 
         self.frames = {}
 # AQUI É SÓ COLOCAR NESSE FOR SE QUISER ADICIONAR UMA PÁGINA NOVA
-        for F in (Home, A_D_J, M_D_J, O_P_F, O_NP_F, Ajuda, P_F, Creditos, Colaboradores, Agradecimentos, R_B, Iniciar_al, Iniciar_fac, Iniciar_med, Iniciar_dif, Dificuldade, Dicionario, C_D, pal_pad, pad_al, pad_fac, pad_med, pad_dif, pal_add, add_al, add_fac, add_med, add_dif):
+        for F in (Home, A_D_J, M_D_J, O_P_F, O_NP_F, Ajuda, P_F, Creditos, Colaboradores, Agradecimentos, R_B, Iniciar_al, Iniciar_fac, Iniciar_med, Iniciar_dif, Dificuldade, Dicionario, C_D, pal_pad, pad_al, pad_fac, pad_med, pad_dif, pal_add, add_al, add_fac, add_med, add_dif, add_pal, exc_pal):
 
             frame = F(container, self)
 
@@ -46,15 +48,12 @@ class Home(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self,parent)
         label = tk.Label(self, width=40, height= 3, text="Jogo da Forca", font=LARGE_FONT).pack(pady=10,padx=10)
-
-        btn1 = tk.Button(self, width=40, height=3, text="Apresentação do jogo",                                                                                  command=lambda: controller.show_frame(A_D_J)).pack()
-        btn2 = tk.Button(self, width=40, height=3, text="Iniciar",                                                                                               command=lambda: controller.show_frame(Iniciar_al)).pack()
-        btn3 = tk.Button(self, width=40, height=3, text="Dicionário de palavras",                                                                                command=lambda: controller.show_frame(Dicionario)).pack()
-        btn4 = tk.Button(self, width=40, height=3, text="Ajuda",                                                                                                 command=lambda: controller.show_frame(Ajuda)).pack()
-        btn5 = tk.Button(self, width=40, height=3, text="Créditos",                                                                                              command=lambda: controller.show_frame(Creditos)).pack()
-        btn_saida = tk.Button(self, width=15, text="Sair do Jogo",                                                                                                 command=lambda: quit()).pack (side="bottom", anchor="sw")
-
-
+        btn1 = tk.Button(self, width=40, height=3, text="Apresentação do jogo",                                                                             command=lambda: controller.show_frame(A_D_J)).pack()
+        btn2 = tk.Button(self, width=40, height=3, text="Iniciar",                                                                                          command=lambda: controller.show_frame(Iniciar_al)).pack()
+        btn3 = tk.Button(self, width=40, height=3, text="Dicionário de palavras",                                                                           command=lambda: controller.show_frame(Dicionario)).pack()
+        btn4 = tk.Button(self, width=40, height=3, text="Ajuda",                                                                                            command=lambda: controller.show_frame(Ajuda)).pack()
+        btn5 = tk.Button(self, width=40, height=3, text="Créditos",                                                                                         command=lambda: controller.show_frame(Creditos)).pack()
+        btn_saida = tk.Button(self, width=15, text="Sair do jogo",                                                                                          command=lambda: quit()).pack(side="bottom", anchor="sw")
 # Apresentação do jogo #
 class A_D_J(tk.Frame):
     def __init__(self, parent, controller):
@@ -155,12 +154,78 @@ class Dicionario(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, width=40, height= 3, text="Dicionário", font= LARGE_FONT).pack(pady=10,padx=10)
-
+        
         btn1 = tk.Button(self, width=40, height=3, text="Consultar Dicionário",                                                         command=lambda: controller.show_frame(C_D)).pack()
-        btn2 = tk.Button(self, width=40, height=3, text="Adicionar Palavra").pack()
-        btn3 = tk.Button(self, width=40, height=3, text="Excluir Palavra").pack()
+        btn2 = tk.Button(self, width=40, height=3, text="Adicionar Palavra",                                                         command=lambda: controller.show_frame(add_pal)).pack()
+        btn3 = tk.Button(self, width=40, height=3, text="Excluir Palavra",                                                         command=lambda: controller.show_frame(exc_pal)).pack()
         btn_saida = tk.Button(self, width=15, text="Anterior",                                                                          command=lambda: controller.show_frame(Home)).pack (side="bottom", anchor="sw")
+# ADICIONAR PALAVRA #
+class add_pal(tk.Frame):
+    def __init__(self, parent, controller): 
+        tk.Frame.__init__(self, parent)
+        def op():
+            v_1 = principal.get()
+            if v_1 == "A" or v_1 == "a":
+                palavra = word.get()
+                insere_al(palavra)
+            elif v_1 == "B" or v_1 == "b":
+                palavra = word.get() 
+                insere_fac(palavra)
+            elif v_1 == "C" or v_1 == "c":
+                palavra = word.get() 
+                insere_med(palavra)
+            elif v_1 == "D" or v_1 == "d":
+                palavra = word.get() 
+                insere_dif(palavra)
+            else:
+                op()
 
+        label = tk.Label(self, width=40, height= 2, text="Categorias:", font= LARGE_FONT).pack()
+        label1 = tk.Label(self, width=40, height= 2, text="ALEATÓRIO(A), FACEIS(B)", font= LARGE_FONT).pack()
+        label2 = tk.Label(self, width=40, height= 2, text="MEDIAS(C), DIFÍCEIS(D)", font= LARGE_FONT).pack()
+        principal = tk.StringVar()
+        tk.Entry(self, textvariable= principal).pack()        
+        label = tk.Label(self, width=40, height= 3, text="Insira a palavra a ser adicionada:", font= LARGE_FONT).pack(pady=10,padx=10)
+        word = tk.StringVar()
+        tk.Entry(self, textvariable = word).pack()
+        btn2 = tk.Button(self, text="Confirmar", command= op).pack()
+        
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                          command=lambda: controller.show_frame(Dicionario)).pack (side="bottom", anchor="sw")
+
+# EXCLUIR PALAVRA #
+class exc_pal(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        def op():
+            v_1 = principal.get()
+            if v_1 == "A" or v_1 == "a":
+                palavra = word.get()
+                exclui_al(palavra)
+            elif v_1 == "B" or v_1 == "b":
+                palavra = word.get() 
+                exclui_fac(palavra)
+            elif v_1 == "C" or v_1 == "c":
+                palavra = word.get() 
+                exclui_med(palavra)
+            elif v_1 == "D" or v_1 == "d":
+                palavra = word.get() 
+                exclui_dif(palavra)
+            else:
+                op()
+
+        label = tk.Label(self, width=40, height= 2, text="Categorias:", font= LARGE_FONT).pack()
+        label1 = tk.Label(self, width=40, height= 2, text="ALEATÓRIO(A), FACEIS(B)", font= LARGE_FONT).pack()
+        label2 = tk.Label(self, width=40, height= 2, text="MEDIAS(C), DIFÍCEIS(D)", font= LARGE_FONT).pack()
+        principal = tk.StringVar()
+        tk.Entry(self, textvariable= principal).pack()        
+        label = tk.Label(self, width=40, height= 3, text="Insira a palavra a ser excluída:", font= LARGE_FONT).pack(pady=10,padx=10)
+        word = tk.StringVar()
+        tk.Entry(self, textvariable = word).pack()
+        btn2 = tk.Button(self, text="Confirmar", command= op).pack()
+        
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                          command=lambda: controller.show_frame(Dicionario)).pack (side="bottom", anchor="sw")
+
+       
 # Consultar Dicionário #
 class C_D(tk.Frame):
     def __init__(self, parent, controller):
@@ -169,7 +234,7 @@ class C_D(tk.Frame):
 
         btn1 = tk.Button(self, width=40, height=3, text="Palavras Padrão",                                                          command=lambda: controller.show_frame(pal_pad)).pack()
         btn2 = tk.Button(self, width=40, height=3, text="Palavras Adicionadas",                                                     command=lambda: controller.show_frame(pal_add)).pack()
-        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                      command=lambda: controller.show_frame(Home)).pack(side="bottom", anchor="sw")
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                      command=lambda: controller.show_frame(Dicionario)).pack(side="bottom", anchor="sw")
 
 # Bloco palavras padrão #
 class pal_pad(tk.Frame):
