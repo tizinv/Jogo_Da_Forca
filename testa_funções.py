@@ -1,36 +1,96 @@
-def main_dic(): #função pra teste, fiz apenas pra palavras faceis
-    palavra = input("Insira a palavra: ")
-    palavra = palavra.lower()
-    print("1 para fácil \t 2 para medio \t 3 para dificil", end ='\t')
-    recebe = int(input(':'))
-    if recebe == 1:
-        opt = int(input("Digite 1 se deseja adicionar ou 2 se deseja excluir: "))
-        if opt == 1:
-            insere_al(palavra)
-            insere_fac(palavra)
-        else:
-            exclui_al(palavra)
-            exclui_fac(palavra)
-    elif recebe == 2:
-        opt = int(input("Digite 1 se deseja adicionar ou 2 se deseja excluir: "))
-        if opt == 1:
-            insere_al(palavra)
-            insere_med(palavra)
-        else:
-            exclui_al(palavra)
-            exclui_med(palavra)
-    elif recebe == 3:
-        opt = int(input("Digite 1 se deseja adicionar ou 2 se deseja excluir: "))
-        if opt == 1:
-            insere_al(palavra)
-            insere_dif(palavra)
-        else:
-            exclui_al(palavra)
-            exclui_dif(palavra)
+import time
 
-    test = int(input("Deseja continuar? Digite 1 pra sim e 2 pra não: "))
-    if test == 1:
-        main_dic()
+def main(): #função pra teste, fiz apenas pra palavras faceis
+    print("#######################################")
+    print("######   BEM VINDO AO INICIADOR  ######")
+    print("#######################################")
+    print("")
+    print("######          OPÇÕES           ######")
+    print("")
+    print("#######################################")
+    print("# Adicionar/Excluir palavras aperte 1 #")
+    print("#        Abrir o MENU aperte 2        #")
+    print("#######################################")
+    print("")
+    print("")
+    time.sleep(1)
+    entrada = input("Opção do Usuário:\n")
+    if entrada == "1":
+        palavra = input("Insira a palavra: \n")
+        palavra = palavra.lower()
+        recebe = input("Aperte 1 para fácil \t 2 para Médio \t 3 para Difícil:\n")
+        if recebe == "1":
+            opt = input("Digite 1 se deseja adicionar ou 2 se deseja excluir:\n ")
+            if opt == "1":
+                insere_al(palavra)
+                insere_fac(palavra)
+            elif opt == "2":
+                exclui_al(palavra)
+                exclui_fac(palavra)
+            else: 
+                print("#        ERRO        #")
+                print("#        ERRO        #")
+                print("#        ERRO        #")
+                time.sleep(1.5)
+                main()
+
+        elif recebe == "2":
+            opt = input("Digite 1 se deseja adicionar ou 2 se deseja excluir:\n ")
+            if opt == "1":
+                insere_al(palavra)
+                insere_med(palavra)
+            elif opt == "2":
+                exclui_al(palavra)
+                exclui_med(palavra)
+            else: 
+                print("#        ERRO        #")
+                print("#        ERRO        #")
+                print("#        ERRO        #")
+                time.sleep(1.5)
+                main()
+
+        elif recebe == "3":
+            opt = input("Digite 1 se deseja adicionar ou 2 se deseja excluir:\n ")
+            if opt == "1":
+                insere_al(palavra)
+                insere_dif(palavra)
+            elif opt == "2":
+                exclui_al(palavra)
+                exclui_dif(palavra)
+            else: 
+                print("#        ERRO        #")
+                print("#        ERRO        #")
+                print("#        ERRO        #")
+                time.sleep(1.5)
+                main()
+        else:
+                print("#        ERRO        #")
+                print("#        ERRO        #")
+                print("#        ERRO        #")
+                time.sleep(1.5)
+                main()
+        test = input("Deseja continuar? Digite 1 pra sim e 2 pra não:\n")
+        if test == "1":
+            main()
+        elif test == "2":
+            return
+        else: 
+            print("#        ERRO        #")
+            print("#        ERRO        #")
+            print("#        ERRO        #")
+            time.sleep(1.5)
+            main()
+
+
+    elif entrada == "2":
+        return
+    
+    else: 
+        print("#        ERRO        #")
+        print("#        ERRO        #")
+        print("#        ERRO        #")
+        time.sleep(1.5)
+        main()
 
 ###################################################################
 ###################################################################
@@ -302,4 +362,5 @@ def transfLista(arq): #transforma as linhas em elementos de uma lista#
     arq.seek(0,0)
     arq = arq.readlines()
     return arq
-main_dic()
+
+main()
