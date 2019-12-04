@@ -1,6 +1,10 @@
 import time
 
 def main(): #função pra teste, fiz apenas pra palavras faceis
+    print("")
+    print("")
+    print("")
+    print("")
     print("#######################################")
     print("######   BEM VINDO AO INICIADOR  ######")
     print("#######################################")
@@ -11,6 +15,8 @@ def main(): #função pra teste, fiz apenas pra palavras faceis
     print("# Adicionar/Excluir palavras aperte 1 #")
     print("#        Abrir o MENU aperte 2        #")
     print("#######################################")
+    print("")
+    print("")
     print("")
     print("")
     time.sleep(1)
