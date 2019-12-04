@@ -1,121 +1,16 @@
-import time
-
-def main(): #função pra teste, fiz apenas pra palavras faceis
-    print("")
-    print("")
-    print("")
-    print("")
-    print("#######################################")
-    print("######   BEM VINDO AO INICIADOR  ######")
-    print("#######################################")
-    print("")
-    print("######          OPÇÕES           ######")
-    print("")
-    print("#######################################")
-    print("# Adicionar/Excluir palavras aperte 1 #")
-    print("#        Abrir o MENU aperte 2        #")
-    print("#######################################")
-    print("")
-    print("")
-    print("")
-    print("")
-    time.sleep(1)
-    entrada = input("Opção do Usuário:\n")
-    if entrada == "1":
-        palavra = input("Insira a palavra: \n")
-        palavra = palavra.lower()
-        recebe = input("Aperte 1 para fácil \t 2 para Médio \t 3 para Difícil:\n")
-        if recebe == "1":
-            opt = input("Digite 1 se deseja adicionar ou 2 se deseja excluir:\n ")
-            if opt == "1":
-                insere_al(palavra)
-                insere_fac(palavra)
-            elif opt == "2":
-                exclui_al(palavra)
-                exclui_fac(palavra)
-            else: 
-                print("#        ERRO        #")
-                print("#        ERRO        #")
-                print("#        ERRO        #")
-                time.sleep(1.5)
-                main()
-
-        elif recebe == "2":
-            opt = input("Digite 1 se deseja adicionar ou 2 se deseja excluir:\n ")
-            if opt == "1":
-                insere_al(palavra)
-                insere_med(palavra)
-            elif opt == "2":
-                exclui_al(palavra)
-                exclui_med(palavra)
-            else: 
-                print("#        ERRO        #")
-                print("#        ERRO        #")
-                print("#        ERRO        #")
-                time.sleep(1.5)
-                main()
-
-        elif recebe == "3":
-            opt = input("Digite 1 se deseja adicionar ou 2 se deseja excluir:\n ")
-            if opt == "1":
-                insere_al(palavra)
-                insere_dif(palavra)
-            elif opt == "2":
-                exclui_al(palavra)
-                exclui_dif(palavra)
-            else: 
-                print("#        ERRO        #")
-                print("#        ERRO        #")
-                print("#        ERRO        #")
-                time.sleep(1.5)
-                main()
-        else:
-                print("#        ERRO        #")
-                print("#        ERRO        #")
-                print("#        ERRO        #")
-                time.sleep(1.5)
-                main()
-        test = input("Deseja continuar? Digite 1 pra sim e 2 pra não:\n")
-        if test == "1":
-            main()
-        elif test == "2":
-            return
-        else: 
-            print("#        ERRO        #")
-            print("#        ERRO        #")
-            print("#        ERRO        #")
-            time.sleep(1.5)
-            main()
-
-
-    elif entrada == "2":
-        return
-    
-    else: 
-        print("#        ERRO        #")
-        print("#        ERRO        #")
-        print("#        ERRO        #")
-        time.sleep(1.5)
-        main()
-
 ###################################################################
 ###################################################################
         
 def exclui_al(palavra):
     file = open("add_al.txt","r")
-    
     arq = transfLista(file)
-    print (arq)
     arq = tira_n_line(arq)
-    print (arq)
     ifpop = False
     size = len(arq)
     cont = 0
-    while cont < size:
-        
+    while cont < size:    
         if compararString(arq[cont],palavra) == True:
             removido = arq.pop(cont)
-            print(arq)
             size -= 1
             ifpop = True
             
@@ -123,7 +18,6 @@ def exclui_al(palavra):
     for i in range(len(arq)):
         arq[i] += '\n'
     
-    print (arq)
     file.close()
     exclui0(ifpop,arq)
 
@@ -143,9 +37,7 @@ def exclui_fac(palavra):
     file = open("add_fac.txt","r")
     
     arq = transfLista(file)
-    print (arq)
     arq = tira_n_line(arq)
-    print (arq)
     ifpop = False
     size = len(arq)
     cont = 0
@@ -153,7 +45,6 @@ def exclui_fac(palavra):
         
         if compararString(arq[cont],palavra) == True:
             removido = arq.pop(cont)
-            print(arq)
             size -= 1
             ifpop = True
             
@@ -161,7 +52,6 @@ def exclui_fac(palavra):
     for i in range(len(arq)):
         arq[i] += '\n'
     
-    print (arq)
     file.close()
     exclui1(ifpop,arq)
 
@@ -181,9 +71,7 @@ def exclui_med(palavra):
     file = open("add_med.txt","r")
     
     arq = transfLista(file)
-    print (arq)
     arq = tira_n_line(arq)
-    print (arq)
     ifpop = False
     size = len(arq)
     cont = 0
@@ -191,7 +79,6 @@ def exclui_med(palavra):
         
         if compararString(arq[cont],palavra) == True:
             removido = arq.pop(cont)
-            print(arq)
             size -= 1
             ifpop = True
             
@@ -199,7 +86,6 @@ def exclui_med(palavra):
     for i in range(len(arq)):
         arq[i] += '\n'
     
-    print (arq)
     file.close()
     exclui2(ifpop,arq)
 
@@ -219,9 +105,7 @@ def exclui_dif(palavra):
     file = open("add_dif.txt","r")
     
     arq = transfLista(file)
-    print (arq)
     arq = tira_n_line(arq)
-    print (arq)
     ifpop = False
     size = len(arq)
     cont = 0
@@ -229,7 +113,6 @@ def exclui_dif(palavra):
         
         if compararString(arq[cont],palavra) == True:
             removido = arq.pop(cont)
-            print(arq)
             size -= 1
             ifpop = True
             
@@ -237,7 +120,6 @@ def exclui_dif(palavra):
     for i in range(len(arq)):
         arq[i] += '\n'
     
-    print (arq)
     file.close()
     exclui3(ifpop,arq)
 
@@ -255,8 +137,7 @@ def exclui3(ifpop,arq):
 
 ###############################################################
 ###############################################################
-def insere_al(palavra): #verifica se existe ou não a palavra no dicionário#
-    
+def insere_al(palavra): #verifica se existe ou não a palavra no dicionário# 
     file1 = open("add_al.txt","a")
     
     if verif_al(palavra) == False:
@@ -369,4 +250,3 @@ def transfLista(arq): #transforma as linhas em elementos de uma lista#
     arq = arq.readlines()
     return arq
 
-main()
