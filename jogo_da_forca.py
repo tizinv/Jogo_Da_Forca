@@ -52,6 +52,8 @@ class Home(tk.Frame):
         btn3 = tk.Button(self, width=40, height=3, text="Dicionário de palavras",                                                                                command=lambda: controller.show_frame(Dicionario)).pack()
         btn4 = tk.Button(self, width=40, height=3, text="Ajuda",                                                                                                 command=lambda: controller.show_frame(Ajuda)).pack()
         btn5 = tk.Button(self, width=40, height=3, text="Créditos",                                                                                              command=lambda: controller.show_frame(Creditos)).pack()
+        btn_saida = tk.Button(self, width=15, text="Sair do Jogo",                                                                                                 command=lambda: quit()).pack (side="bottom", anchor="sw")
+
 
 # Apresentação do jogo #
 class A_D_J(tk.Frame):
