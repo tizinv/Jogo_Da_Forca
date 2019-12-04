@@ -209,7 +209,7 @@ class Dificuldade(tk.Frame):
 class Jogar(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        
+
         lista_palavras = ["FLAMENGO"]
 
         photos = [tk.PhotoImage(file="0_erro.png"),tk.PhotoImage(file="1_erro.png"),tk.PhotoImage(file="2_erro.png"),
@@ -236,14 +236,21 @@ class Jogar(tk.Frame):
                             letra[i] = letter
                         lblWord.set("".join(letra))
                         if lblWord.get() == palavra_underline:
-                            messagebox.showinfo("Jogo Da Forca","Você Adivinhou!")
-                            messagebox
+                            resposta = messagebox.askquestion(title="Você Adivinhou!", message="PARABÉNS!!! Você deseja continuar?") 
+                            if resposta == "yes":
+                                newGame()
+                            elif resposta == "no":
+                                controller.show_frame(Iniciar_al)
                         
                 else:
                     erros += 1
                     imgLabel.config(image= photos[erros])
                     if erros == 6:
-                        messagebox.showwarning("Jogo Da Forca", "Você Perdeu.")
+                        resposta = messagebox.askquestion(title="Você Perdeu! D:", message="Você deseja continuar?")
+                        if resposta == "yes":
+                            newGame()
+                        elif resposta == "no":
+                            controller.show_frame(Iniciar_al)
                         
                    
         imgLabel= tk.Label(self)
