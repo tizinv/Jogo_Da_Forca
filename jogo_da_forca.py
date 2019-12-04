@@ -168,7 +168,7 @@ class Jogar(tk.Frame):
             imgLabel.config(image=photos[0])
             palavra = random.choice(lista_palavras)
             palavra_underline = " ".join(palavra)
-            lblWord.set(" ".join("_"*len(palavra_underline)))
+            lblWord.set(" ".join("_"*len(palavra)))
 
         def guess(letter):
             global erros
