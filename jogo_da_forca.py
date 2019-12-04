@@ -1,5 +1,6 @@
 import tkinter as tk
 from funcoes import *
+from tkinter import messagebox
 # LIMPEZA
 LARGE_FONT= ("Verdana", 18)
 
@@ -240,13 +241,47 @@ class C_D(tk.Frame):
 class pal_pad(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        label = tk.Label(self, width=40, height=3, text="Palavras Padrão", font= LARGE_FONT).pack(pady=10, padx=10)
+        def op():
+            palavra = word.get()
+            verif_1(palavra)
+            verif_2(palavra)
+            verif_3(palavra)
+            verif_4(palavra)
+            
+        def verif_1(palavra):
+            if verif_pad_al(palavra) == True:
+                messagebox.showinfo("","Palavra já existe nos aleatórios")
+            else:
+                messagebox.showinfo("","Palavra não existe nos aleatórios")
+                
+        def verif_2(palavra):
+            if verif_pad_fac(palavra) == True:
+                messagebox.showinfo("","Palavra já existe nos fáceis")
+            else:
+                messagebox.showinfo("","Palavra não existe nos fáceis")
+                
+        def verif_3(palavra):
+            if verif_pad_med(palavra) == True:
+                messagebox.showinfo("","Palavra já existe nas médios")
+            else:
+                messagebox.showinfo("","Palavra não existe nas médios")
+                
+        def verif_4(palavra):
+            if verif_pad_dif(palavra) == True:
+                messagebox.showinfo("","Palavra já existe nos dificeis")
+            else:
+                messagebox.showinfo("","Palavra não existe nos dificeis")
 
-        btn1 = tk.Button(self, width=40, height=3, text="Categoria Aleatória",                                                         command=lambda: controller.show_frame(pad_al)).pack()
-        btn2 = tk.Button(self, width=40, height=3, text="Categoria Fácil",                                                             command=lambda: controller.show_frame(pad_fac)).pack()
-        btn3 = tk.Button(self, width=40, height=3, text="Categoria Média",                                                             command=lambda: controller.show_frame(pad_med)).pack()
-        btn4 = tk.Button(self, width=40, height=3, text="Categoria Difícil",                                                           command=lambda: controller.show_frame(pad_dif)).pack()
-        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                          command=lambda: controller.show_frame(C_D)).pack(side="bottom", anchor="sw")
+        label = tk.Label(self, width=40, height= 2, text="Palavras Padrão", font= LARGE_FONT).pack()
+        
+                
+        label2 = tk.Label(self, width=40, height= 3, text="Insira a palavra a ser consultada:", font= LARGE_FONT).pack(pady=10,padx=10)
+        word = tk.StringVar()
+        tk.Entry(self, textvariable = word).pack()
+        btn2 = tk.Button(self, text="Confirmar", command= op).pack()
+        
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                          command=lambda: controller.show_frame(Dicionario)).pack (side="bottom", anchor="sw")
+
 
 # Aleatórias #
 class pad_al(tk.Frame):
@@ -294,13 +329,46 @@ class pad_dif(tk.Frame):
 class pal_add(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        label = tk.Label(self, width=40, height=3, text="Categoria Aleatória", font= LARGE_FONT).pack(pady=10, padx=10)
+        def op():
+            palavra = word.get()
+            verif_1(palavra)
+            verif_2(palavra)
+            verif_3(palavra)
+            verif_4(palavra)
+            
+        def verif_1(palavra):
+            if verif_add_al(palavra) == True:
+                messagebox.showinfo("","Palavra já existe nos aleatórios")
+            else:
+                messagebox.showinfo("","Palavra não existe nos aleatórios")
+                
+        def verif_2(palavra):
+            if verif_add_fac(palavra) == True:
+                messagebox.showinfo("","Palavra já existe nos fáceis")
+            else:
+                messagebox.showinfo("","Palavra não existe nos fáceis")
+                
+        def verif_3(palavra):
+            if verif_add_med(palavra) == True:
+                messagebox.showinfo("","Palavra já existe nas médios")
+            else:
+                messagebox.showinfo("","Palavra não existe nas médios")
+                
+        def verif_4(palavra):
+            if verif_add_dif(palavra) == True:
+                messagebox.showinfo("","Palavra já existe nos dificeis")
+            else:
+                messagebox.showinfo("","Palavra não existe nos dificeis")
 
-        btn1 = tk.Button(self, width=40, height=3, text="Categoria Aleatória",                                                         command=lambda: controller.show_frame(add_al)).pack()
-        btn2 = tk.Button(self, width=40, height=3, text="Categoria Fácil",                                                             command=lambda: controller.show_frame(add_fac)).pack()
-        btn3 = tk.Button(self, width=40, height=3, text="Categoria Média",                                                             command=lambda: controller.show_frame(add_med)).pack()
-        btn4 = tk.Button(self, width=40, height=3, text="Categoria Difícil",                                                           command=lambda: controller.show_frame(add_dif)).pack()
-        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                          command=lambda: controller.show_frame(Home)).pack (side="bottom", anchor="sw")
+        label = tk.Label(self, width=40, height= 2, text="Palavras Adicionadas", font= LARGE_FONT).pack()
+        
+                
+        label2 = tk.Label(self, width=40, height= 3, text="Insira a palavra a ser consultada:", font= LARGE_FONT).pack(pady=10,padx=10)
+        word = tk.StringVar()
+        tk.Entry(self, textvariable = word).pack()
+        btn2 = tk.Button(self, text="Confirmar", command= op).pack()
+        
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                          command=lambda: controller.show_frame(Dicionario)).pack (side="bottom", anchor="sw")
 
 # Aleatorio #
 class add_al(tk.Frame):
@@ -431,3 +499,4 @@ class a (tk.Frame):
 
 app = Master()
 app.mainloop()
+

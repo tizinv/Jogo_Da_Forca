@@ -1,6 +1,3 @@
-###################################################################
-###################################################################
-        
 def exclui_al(palavra):
     file = open("add_al.txt","r")
     arq = transfLista(file)
@@ -140,7 +137,7 @@ def exclui3(ifpop,arq):
 def insere_al(palavra): #verifica se existe ou não a palavra no dicionário# 
     file1 = open("add_al.txt","a")
     
-    if verif_al(palavra) == False:
+    if verif_add_al(palavra) == False:
         file1.write(palavra+'\n')
         print("Palavra adicionada nos aleatórios.") 
     else:
@@ -152,7 +149,7 @@ def insere_fac(palavra): #verifica se existe ou não a palavra no dicionário#
     
     file1 = open("add_fac.txt","a")
     
-    if verif_fac(palavra) == False:
+    if verif_add_fac(palavra) == False:
         file1.write(palavra+'\n')
         print("Palavra adicionada nas fáceis.") 
     else:
@@ -164,7 +161,7 @@ def insere_med(palavra): #verifica se existe ou não a palavra no dicionário#
     
     file1 = open("add_med.txt","a")
     
-    if verif_med(palavra) == False:
+    if verif_add_med(palavra) == False:
         file1.write(palavra+'\n')
         print("Palavra adicionada nas médias.") 
     else:
@@ -176,7 +173,7 @@ def insere_dif(palavra): #verifica se existe ou não a palavra no dicionário#
     
     file1 = open("add_dif.txt","a")
     
-    if verif_dif(palavra) == False:
+    if verif__add_dif(palavra) == False:
         file1.write(palavra+'\n')
         print("Palavra adicionada nas difíceis.") 
     else:
@@ -184,7 +181,7 @@ def insere_dif(palavra): #verifica se existe ou não a palavra no dicionário#
 
     file1.close()
         
-def verif_al(palavra):
+def verif_add_al(palavra):
     file = open("add_al.txt","r")
     arq = transfLista(file)
     for elem in range(len(arq)):
@@ -195,7 +192,7 @@ def verif_al(palavra):
             return True
     return False
 
-def verif_fac(palavra):    
+def verif_add_fac(palavra):    
     file = open("add_fac.txt","r")
     arq = transfLista(file)
     for elem in range(len(arq)):
@@ -206,7 +203,7 @@ def verif_fac(palavra):
             return True
     return False
 
-def verif_med(palavra):
+def verif_add_med(palavra):
     file = open("add_med.txt","r")
     arq = transfLista(file)
     for elem in range(len(arq)):
@@ -217,8 +214,52 @@ def verif_med(palavra):
             return True
     return False
 
-def verif_dif(palavra):
+def verif_add_dif(palavra):
     file = open("add_dif.txt","r")
+    arq = transfLista(file)
+    for elem in range(len(arq)):
+        arq[elem] = arq[elem].strip()
+    for i in arq:
+        if compararString(i,palavra) == True:
+            file.close()
+            return True
+    return False
+
+def verif_pad_al(palavra):
+    file = open("pad_al.txt","r")
+    arq = transfLista(file)
+    for elem in range(len(arq)):
+        arq[elem] = arq[elem].strip()
+    for i in arq:
+        if compararString(i,palavra) == True:
+            file.close()
+            return True
+    return False
+
+def verif_pad_fac(palavra):    
+    file = open("pad_fac.txt","r")
+    arq = transfLista(file)
+    for elem in range(len(arq)):
+        arq[elem] = arq[elem].strip()
+    for i in arq:
+        if compararString(i,palavra) == True:
+            file.close()
+            return True
+    return False
+
+def verif_pad_med(palavra):
+    file = open("pad_med.txt","r")
+    arq = transfLista(file)
+    for elem in range(len(arq)):
+        arq[elem] = arq[elem].strip()
+    for i in arq:
+        if compararString(i,palavra) == True:
+            file.close()
+            return True
+    return False
+
+def verif_pad_dif(palavra):
+    file = open("pad_dif.txt","r")
     arq = transfLista(file)
     for elem in range(len(arq)):
         arq[elem] = arq[elem].strip()
@@ -249,4 +290,3 @@ def transfLista(arq): #transforma as linhas em elementos de uma lista#
     arq.seek(0,0)
     arq = arq.readlines()
     return arq
-
