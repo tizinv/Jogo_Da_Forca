@@ -1,5 +1,5 @@
 import tkinter as tk
-
+from funcoes import main
 # LIMPEZA
 LARGE_FONT= ("Verdana", 18)
 
