@@ -1,6 +1,6 @@
 import tkinter as tk
 from funcoes import *
-from string import ascii_uppercase
+from string import ascii_lowercase
 from tkinter import messagebox
 import random
 # LIMPEZA
@@ -25,10 +25,9 @@ class Master(tk.Tk):
 
         self.frames = {}
 # AQUI É SÓ COLOCAR NESSE FOR SE QUISER ADICIONAR UMA PÁGINA NOVA
-        for F in (Home, A_D_J, M_D_J, O_P_F, O_NP_F, Ajuda, P_F, Creditos, Colaboradores,
-                  Agradecimentos, R_B, Iniciar_al, Iniciar_fac, Iniciar_med, Iniciar_dif, Dificuldade,
-                  Dicionario, C_D, pal_pad, pad_al, pad_fac, pad_med, pad_dif, pal_add, add_al, add_fac,
-                  add_med, add_dif, add_pal, exc_pal, Jogar):
+        for F in (Home, A_D_J, M_D_J, O_P_F, O_NP_F, Ajuda, P_F, Creditos, Colaboradores, Agradecimentos, R_B, Iniciar_al, Iniciar_fac,
+                  Iniciar_med, Iniciar_dif, Dificuldade, Dicionario, C_D, pal_pad, pad_al, pad_fac, pad_med, pad_dif, pal_add, add_al,
+                  add_fac, add_med, add_dif, add_pal, exc_pal, Jogar_al, Jogar_fac, Jogar_med, Jogar_dif):
 
             frame = F(container, self)
 
@@ -54,54 +53,32 @@ class Home(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self,parent)
         label = tk.Label(self, width=40, height= 3, text="Jogo da Forca", font=LARGE_FONT).pack(pady=10,padx=10)
-        
-        btn1 = tk.Button(self, width=40, height=3, text="Apresentação do jogo",
-                         command=lambda: controller.show_frame(A_D_J)).pack()
-        
-        btn2 = tk.Button(self, width=40, height=3, text="Iniciar",
-                         command=lambda: controller.show_frame(Iniciar_al)).pack()
-        
-        btn3 = tk.Button(self, width=40, height=3, text="Dicionário de palavras",
-                         command=lambda: controller.show_frame(Dicionario)).pack()
-        
-        btn4 = tk.Button(self, width=40, height=3, text="Ajuda",
-                         command=lambda: controller.show_frame(Ajuda)).pack()
-        
-        btn5 = tk.Button(self, width=40, height=3, text="Créditos",
-                         command=lambda: controller.show_frame(Creditos)).pack()
-        
-        btn_saida = tk.Button(self, width=25, height=2, text="Sair do jogo",
-                         command=lambda: quit()).pack(side="bottom", anchor="sw")
-        
+        btn1 = tk.Button(self, width=40, height=3, text="Apresentação do jogo",                                                                             command=lambda: controller.show_frame(A_D_J)).pack()
+        btn2 = tk.Button(self, width=40, height=3, text="Iniciar",                                                                                          command=lambda: controller.show_frame(Iniciar_al)).pack()
+        btn3 = tk.Button(self, width=40, height=3, text="Dicionário de palavras",                                                                           command=lambda: controller.show_frame(Dicionario)).pack()
+        btn4 = tk.Button(self, width=40, height=3, text="Ajuda",                                                                                            command=lambda: controller.show_frame(Ajuda)).pack()
+        btn5 = tk.Button(self, width=40, height=3, text="Créditos",                                                                                         command=lambda: controller.show_frame(Creditos)).pack()
+        btn_saida = tk.Button(self, width=15, text="Sair do jogo",                                                                                          command=lambda: quit()).pack(side="bottom", anchor="sw")
 # Apresentação do jogo #
 class A_D_J(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, width=40, height= 3, text="Apresentação do jogo", font=LARGE_FONT).pack(pady=10,padx=10)
 
-        btn1 = tk.Button(self, width=40, height=3, text="Mecânicas do jogo",
-                         command=lambda: controller.show_frame(M_D_J)).pack()
-        
-        btn2 = tk.Button(self, width=40, height=3, text="O que se pode fazer",
-                         command=lambda: controller.show_frame(O_P_F)).pack()
-        
-        btn3 = tk.Button(self, width=40, height=3, text="O que não se pode fazer",
-                         command=lambda: controller.show_frame(O_NP_F)).pack()
-        
-        btn_saida = tk.Button(self, width=25, height=2, text="Anterior",
-                         command=lambda: controller.show_frame(Home)).pack (side="bottom", anchor="sw")
+        btn1 = tk.Button(self, width=40, height=3, text="Mecânicas do jogo",                                                                         command=lambda: controller.show_frame(M_D_J)).pack()
+        btn2 = tk.Button(self, width=40, height=3, text="O que se pode fazer",                                                                       command=lambda: controller.show_frame(O_P_F)).pack()
+        btn3 = tk.Button(self, width=40, height=3, text="O que não se pode fazer",                                                                   command=lambda: controller.show_frame(O_NP_F)).pack()
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                                                 command=lambda: controller.show_frame(Home)).pack (side="bottom", anchor="sw")
 
 # Mecânicas do jogo #
 class M_D_J(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        
         label = tk.Label(self, width=40, height= 3, text="Mecânicas do jogo", font=LARGE_FONT).pack(pady=10,padx=10)
         f = open("mecanicas.txt", "r").read()
         lb = tk.Label(self, text = f).pack()                                  
 
-        btn_saida = tk.Button(self,  width=25, height=2, text="Anterior",
-                        command=lambda: controller.show_frame(A_D_J)).pack (side="bottom", anchor="sw")
+        btn_saida = tk.Button(self,  width=15, text="Anterior",                                                                          command=lambda: controller.show_frame(A_D_J)).pack (side="bottom", anchor="sw")
 
 # O que pode ser feito #
 class O_P_F(tk.Frame):
@@ -112,8 +89,7 @@ class O_P_F(tk.Frame):
         f = open("o_p_f.txt", "r").read()
         lb = tk.Label(self, text = f).pack()                                  
 
-        btn_saida = tk.Button(self, width=25, height=2, text="Anterior",
-                              command=lambda: controller.show_frame(A_D_J)).pack (side="bottom", anchor="sw")
+        btn_saida = tk.Button(self, width=15, text="Anterior",   command=lambda: controller.show_frame(A_D_J)).pack (side="bottom", anchor="sw")
 
 # O que não pode ser feito #
 class O_NP_F(tk.Frame):
@@ -124,8 +100,7 @@ class O_NP_F(tk.Frame):
         f = open("o_np_f.txt", "r").read()
         lb = tk.Label(self, text = f).pack()                                  
 
-        btn_saida = tk.Button(self, width=25, height=2, text="Anterior",
-                              command=lambda: controller.show_frame(A_D_J)).pack (side="bottom", anchor="sw")
+        btn_saida = tk.Button(self, width=15, text="Anterior",    command=lambda: controller.show_frame(A_D_J)).pack (side="bottom", anchor="sw")
 
 # Jogar #
 
@@ -135,54 +110,36 @@ class Iniciar_al(tk.Frame):
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, width=40, height= 3, text="Iniciar", font= LARGE_FONT).pack(pady=10,padx=10)
 
-        btn1 = tk.Button(self, width=40, height=3, text="Dificuldades (Aleatório)",
-                         command=lambda: controller.show_frame(Dificuldade)).pack()
-        
-        btn2 = tk.Button(self, width=40, height=3, text="Iniciar",
-                         command=lambda: controller.show_frame(Jogar)).pack()
-        
-        btn_saida = tk.Button(self, width=25, height=2, text="Anterior",
-                         command=lambda: controller.show_frame(Home)).pack (side="bottom", anchor="sw")
+        btn1 = tk.Button(self, width=40, height=3, text="Dificuldades (Aleatório)",command=lambda: controller.show_frame(Dificuldade)).pack()
+        btn2 = tk.Button(self, width=40, height=3, text="Iniciar", command=lambda: controller.show_frame(Jogar_al)).pack()
+        btn_saida = tk.Button(self, width=15, text="Anterior",    command=lambda: controller.show_frame(Home)).pack (side="bottom", anchor="sw")
 
 class Iniciar_fac(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, width=40, height= 3, text="Iniciar", font= LARGE_FONT).pack(pady=10,padx=10)
 
-        btn1 = tk.Button(self, width=40, height=3, text="Dificuldades (Fácil)",
-                         command=lambda: controller.show_frame(Dificuldade)).pack()
-        
-        btn2 = tk.Button(self, width=40, height=3, text="Iniciar").pack()
-        
-        btn_saida = tk.Button(self, width=25, height=2, text="Anterior",
-                         command=lambda: controller.show_frame(Home)).pack (side="bottom", anchor="sw")
+        btn1 = tk.Button(self, width=40, height=3, text="Dificuldades (Fácil)",command=lambda: controller.show_frame(Dificuldade)).pack()
+        btn2 = tk.Button(self, width=40, height=3, text="Iniciar", command=lambda: controller.show_frame(Jogar_fac)).pack()
+        btn_saida = tk.Button(self, width=15, text="Anterior",                  command=lambda: controller.show_frame(Home)).pack (side="bottom", anchor="sw")
 
 class Iniciar_med(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, width=40, height= 3, text="Iniciar", font= LARGE_FONT).pack(pady=10,padx=10)
 
-        btn1 = tk.Button(self, width=40, height=3, text="Dificuldades (Média)",
-                         command=lambda: controller.show_frame(Dificuldade)).pack()
-        
-        btn2 = tk.Button(self, width=40, height=3, text="Iniciar").pack()
-        
-        btn_saida = tk.Button(self, width=25, height=2, text="Anterior",
-                              command=lambda: controller.show_frame(Home)).pack (side="bottom", anchor="sw")
+        btn1 = tk.Button(self, width=40, height=3, text="Dificuldades (Média)",                                                         command=lambda: controller.show_frame(Dificuldade)).pack()
+        btn2 = tk.Button(self, width=40, height=3, text="Iniciar",command=lambda: controller.show_frame(Jogar_med)).pack()
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                          command=lambda: controller.show_frame(Home)).pack (side="bottom", anchor="sw")
 
 class Iniciar_dif(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, width=40, height= 3, text="Iniciar", font= LARGE_FONT).pack(pady=10,padx=10)
 
-        btn1 = tk.Button(self, width=40, height=3, text="Dificuldades (Difícil)",
-                         command=lambda: controller.show_frame(Dificuldade)).pack()
-        
-        btn2 = tk.Button(self, width=40, height=3, text="Iniciar").pack()
-        
-        btn_saida = tk.Button(self, width=25, height=2, text="Anterior",
-                              command=lambda: controller.show_frame(Home)).pack (side="bottom", anchor="sw")
-
+        btn1 = tk.Button(self, width=40, height=3, text="Dificuldades (Difícil)",                                                       command=lambda: controller.show_frame(Dificuldade)).pack()
+        btn2 = tk.Button(self, width=40, height=3, text="Iniciar",command=lambda: controller.show_frame(Jogar_dif)).pack()                                                                     
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                          command=lambda: controller.show_frame(Home)).pack (side="bottom", anchor="sw")
 
 # Dificuldade #
 class Dificuldade(tk.Frame):
@@ -190,67 +147,60 @@ class Dificuldade(tk.Frame):
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, width=40, height= 3, text="Dificuldade", font= LARGE_FONT).pack(pady=10,padx=10)
 
-        btn1 = tk.Button(self, width=40, height=3, text="Aleatória",
-                         command=lambda: controller.show_frame(Iniciar_al)).pack()
-        
-        btn2 = tk.Button(self, width=40, height=3, text="Fácil",
-                         command=lambda: controller.show_frame(Iniciar_fac)).pack()
-        
-        btn3 = tk.Button(self, width=40, height=3, text="Média",
-                         command=lambda: controller.show_frame(Iniciar_med)).pack()
-        
-        btn4 = tk.Button(self, width=40, height=3, text="Difícil",
-                         command=lambda: controller.show_frame(Iniciar_dif)).pack()
-        
-        btn_saida = tk.Button(self, width=25, height=2, text="Anterior",
-                         command=lambda: controller.show_frame(Iniciar_al)).pack (side="bottom", anchor="sw")
+        btn1 = tk.Button(self, width=40, height=3, text="Aleatória",                                                                   command=lambda: controller.show_frame(Iniciar_al)).pack()
+        btn2 = tk.Button(self, width=40, height=3, text="Fácil",                                                                       command=lambda: controller.show_frame(Iniciar_fac)).pack()
+        btn3 = tk.Button(self, width=40, height=3, text="Média",                                                                       command=lambda: controller.show_frame(Iniciar_med)).pack()
+        btn4 = tk.Button(self, width=40, height=3, text="Difícil",                                                                     command=lambda: controller.show_frame(Iniciar_dif)).pack()
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                         command=lambda: controller.show_frame(Iniciar_al)).pack (side="bottom", anchor="sw")
 
-
-class Jogar(tk.Frame):
+class Jogar_al(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-
-        lista_palavras = ["FLAMENGO"]
-
+        
+        arq_pad = open("pad_al.txt","r+")
+        arq_add = open("add_al.txt","r+")
+        
+        lista_pad = transfLista(arq_pad)
+        lista_add = transfLista(arq_add)
+        
+        lista = list(lista_pad) + list(lista_add)
+        lista_palavras_al = tira_n_line(lista)
+        
+        print (lista_palavras_al)
+        
         photos = [tk.PhotoImage(file="0_erro.png"),tk.PhotoImage(file="1_erro.png"),tk.PhotoImage(file="2_erro.png"),
                   tk.PhotoImage(file="3_erro.png"),tk.PhotoImage(file="4_erro.png"),tk.PhotoImage(file="5_erro.png"),
                   tk.PhotoImage(file="6_erro.png")]
 
         def newGame():
-            global palavra_underline
+            global palavra_underline_al
             global erros
             erros = 0
             imgLabel.config(image=photos[0])
-            palavra = random.choice(lista_palavras)
-            palavra_underline =" ".join(palavra)
+            palavra = random.choice(lista_palavras_al)
+            print(palavra)
+            palavra_underline_al = " ".join(palavra)
             lblWord.set(" ".join("_"*len(palavra)))
 
         def guess(letter):
             global erros
             if erros<6:
-                txt = list(palavra_underline)
+                txt = list(palavra_underline_al)
                 letra = list(lblWord.get())
-                if palavra_underline.count(letter)>0:
+                if palavra_underline_al.count(letter)>0:
                     for i in range(len(txt)):
                         if txt[i] == letter:
                             letra[i] = letter
                         lblWord.set("".join(letra))
-                        if lblWord.get() == palavra_underline:
-                            resposta = messagebox.askquestion(title="Você Adivinhou!", message="PARABÉNS!!! Você deseja continuar?") 
-                            if resposta == "yes":
-                                newGame()
-                            elif resposta == "no":
-                                controller.show_frame(Iniciar_al)
+                        if lblWord.get() == palavra_underline_al:
+                            messagebox.showinfo("Jogo Da Forca","Você Adivinhou!")
+                            
                         
                 else:
                     erros += 1
                     imgLabel.config(image= photos[erros])
                     if erros == 6:
-                        resposta = messagebox.askquestion(title="Você Perdeu! D:", message="Você deseja continuar?")
-                        if resposta == "yes":
-                            newGame()
-                        elif resposta == "no":
-                            controller.show_frame(Iniciar_al)
+                        messagebox.showwarning("Jogo Da Forca", "Você Perdeu.")
                         
                    
         imgLabel= tk.Label(self)
@@ -262,14 +212,216 @@ class Jogar(tk.Frame):
 
 
         n=0
-        for c in ascii_uppercase:
+        for c in ascii_lowercase:
             tk.Button(self, text=c, command=lambda c=c: guess(c), font= ("Helvetica 18"), width=6).grid(row= 1+n//9, column=n%9, columnspan=1, rowspan=1)
             n += 1
 
 
-        tk.Button(self, text= "Novo\nJogo", command=lambda: newGame(), font= ("Helvetica 10 bold")).grid(row=3, column=8, columnspan=1, sticky="NSWE")
+        tk.Button(self, text= "Novo\nJogo", command=lambda: newGame(), font= ("Helvetica 10 bold")).grid(row=3, column=8, columnspan=2,rowspan=1, sticky="NSWE")
         newGame()
 
+class Jogar_fac(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        
+        arq_pad = open("pad_fac.txt","r+")
+        arq_add = open("add_fac.txt","r+")
+        
+        lista_pad = transfLista(arq_pad)
+        lista_add = transfLista(arq_add)
+        
+        lista = list(lista_pad) + list(lista_add)
+        lista_palavras_fac = tira_n_line(lista)
+        
+        print (lista_palavras_fac)
+        
+        photos = [tk.PhotoImage(file="0_erro.png"),tk.PhotoImage(file="1_erro.png"),tk.PhotoImage(file="2_erro.png"),
+                  tk.PhotoImage(file="3_erro.png"),tk.PhotoImage(file="4_erro.png"),tk.PhotoImage(file="5_erro.png"),
+                  tk.PhotoImage(file="6_erro.png")]
+
+        def newGame():
+            global palavra_underline_al
+            global erros
+            erros = 0
+            imgLabel.config(image=photos[0])
+            palavra = random.choice(lista_palavras_fac)
+            print(palavra)
+            palavra_underline_al = " ".join(palavra)
+            lblWord.set(" ".join("_"*len(palavra)))
+
+        def guess(letter):
+            global erros
+            if erros<6:
+                txt = list(palavra_underline_al)
+                letra = list(lblWord.get())
+                if palavra_underline_al.count(letter)>0:
+                    for i in range(len(txt)):
+                        if txt[i] == letter:
+                            letra[i] = letter
+                        lblWord.set("".join(letra))
+                        if lblWord.get() == palavra_underline_al:
+                            messagebox.showinfo("Jogo Da Forca","Você Adivinhou!")
+                            
+                        
+                else:
+                    erros += 1
+                    imgLabel.config(image= photos[erros])
+                    if erros == 6:
+                        messagebox.showwarning("Jogo Da Forca", "Você Perdeu.")
+                        
+                   
+        imgLabel= tk.Label(self)
+        imgLabel.grid(row=0, column=0, columnspan=3, padx=10, pady=40)
+        imgLabel.config(image=photos[0])
+
+        lblWord = tk.StringVar()
+        tk.Label(self, textvariable = lblWord, font=("Consolas 24 bold")).grid(row=0, column=3, columnspan=6, padx=10)
+
+
+        n=0
+        for c in ascii_lowercase:
+            tk.Button(self, text=c, command=lambda c=c: guess(c), font= ("Helvetica 18"), width=6).grid(row= 1+n//9, column=n%9, columnspan=1, rowspan=1)
+            n += 1
+
+
+        tk.Button(self, text= "Novo\nJogo", command=lambda: newGame(), font= ("Helvetica 10 bold")).grid(row=3, column=8, columnspan=2,rowspan=1, sticky="NSWE")
+        newGame()
+
+
+class Jogar_med(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        
+        arq_pad = open("pad_med.txt","r+")
+        arq_add = open("add_med.txt","r+")
+        
+        lista_pad = transfLista(arq_pad)
+        lista_add = transfLista(arq_add)
+        
+        lista = list(lista_pad) + list(lista_add)
+        lista_palavras_med = tira_n_line(lista)
+        
+        print (lista_palavras_med)
+        
+        photos = [tk.PhotoImage(file="0_erro.png"),tk.PhotoImage(file="1_erro.png"),tk.PhotoImage(file="2_erro.png"),
+                  tk.PhotoImage(file="3_erro.png"),tk.PhotoImage(file="4_erro.png"),tk.PhotoImage(file="5_erro.png"),
+                  tk.PhotoImage(file="6_erro.png")]
+
+        def newGame():
+            global palavra_underline_med
+            global erros
+            erros = 0
+            imgLabel.config(image=photos[0])
+            palavra = random.choice(lista_palavras_med)
+            print(palavra)
+            palavra_underline_med = " ".join(palavra)
+            lblWord.set(" ".join("_"*len(palavra)))
+
+        def guess(letter):
+            global erros
+            if erros<6:
+                txt = list(palavra_underline_med)
+                letra = list(lblWord.get())
+                if palavra_underline_med.count(letter)>0:
+                    for i in range(len(txt)):
+                        if txt[i] == letter:
+                            letra[i] = letter
+                        lblWord.set("".join(letra))
+                        if lblWord.get() == palavra_underline_med:
+                            messagebox.showinfo("Jogo Da Forca","Você Adivinhou!")
+                            messagebox
+                        
+                else:
+                    erros += 1
+                    imgLabel.config(image= photos[erros])
+                    if erros == 6:
+                        messagebox.showwarning("Jogo Da Forca", "Você Perdeu.")
+                        
+                   
+        imgLabel= tk.Label(self)
+        imgLabel.grid(row=0, column=0, columnspan=3, padx=10, pady=40)
+        imgLabel.config(image=photos[0])
+
+        lblWord = tk.StringVar()
+        tk.Label(self, textvariable = lblWord, font=("Consolas 24 bold")).grid(row=0, column=3, columnspan=6, padx=10)
+
+
+        n=0
+        for c in ascii_lowercase:
+            tk.Button(self, text=c, command=lambda c=c: guess(c), font= ("Helvetica 18"), width=6).grid(row= 1+n//9, column=n%9, columnspan=1, rowspan=1)
+            n += 1
+
+
+        tk.Button(self, text= "Novo\nJogo", command=lambda: newGame(), font= ("Helvetica 10 bold")).grid(row=3, column=8, columnspan=2,rowspan=1, sticky="NSWE")
+        newGame()
+
+
+class Jogar_dif(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        
+        arq_pad = open("pad_dif.txt","r+")
+        arq_add = open("add_dif.txt","r+")
+        
+        lista_pad = transfLista(arq_pad)
+        lista_add = transfLista(arq_add)
+        
+        lista = list(lista_pad) + list(lista_add)
+        lista_palavras_dif = tira_n_line(lista)
+        
+        print (lista_palavras_dif)
+        
+        photos = [tk.PhotoImage(file="0_erro.png"),tk.PhotoImage(file="1_erro.png"),tk.PhotoImage(file="2_erro.png"),
+                  tk.PhotoImage(file="3_erro.png"),tk.PhotoImage(file="4_erro.png"),tk.PhotoImage(file="5_erro.png"),
+                  tk.PhotoImage(file="6_erro.png")]
+
+        def newGame():
+            global palavra_underline_dif
+            global erros
+            erros = 0
+            imgLabel.config(image=photos[0])
+            palavra = random.choice(lista_palavras_dif)
+            print(palavra)
+            palavra_underline_dif = " ".join(palavra)
+            lblWord.set(" ".join("_"*len(palavra)))
+
+        def guess(letter):
+            global erros
+            if erros<6:
+                txt = list(palavra_underline_dif)
+                letra = list(lblWord.get())
+                if palavra_underline_dif.count(letter)>0:
+                    for i in range(len(txt)):
+                        if txt[i] == letter:
+                            letra[i] = letter
+                        lblWord.set("".join(letra))
+                        if lblWord.get() == palavra_underline_dif:
+                            messagebox.showinfo("Jogo Da Forca","Você Adivinhou!")
+                            messagebox
+                        
+                else:
+                    erros += 1
+                    imgLabel.config(image= photos[erros])
+                    if erros == 6:
+                        messagebox.showwarning("Jogo Da Forca", "Você Perdeu.")
+                        
+                   
+        imgLabel= tk.Label(self)
+        imgLabel.grid(row=0, column=0, columnspan=3, padx=10, pady=40)
+        imgLabel.config(image=photos[0])
+
+        lblWord = tk.StringVar()
+        tk.Label(self, textvariable = lblWord, font=("Consolas 24 bold")).grid(row=0, column=3, columnspan=6, padx=10)
+
+
+        n=0
+        for c in ascii_lowercase:
+            tk.Button(self, text=c, command=lambda c=c: guess(c), font= ("Helvetica 18"), width=6).grid(row= 1+n//9, column=n%9, columnspan=1, rowspan=1)
+            n += 1
+
+
+        tk.Button(self, text= "Novo\nJogo", command=lambda: newGame(), font= ("Helvetica 10 bold")).grid(row=3, column=8, columnspan=2,rowspan=1, sticky="NSWE")
+        newGame()
 
 
 # DICIONARIO #
@@ -278,19 +430,11 @@ class Dicionario(tk.Frame):
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, width=40, height= 3, text="Dicionário", font= LARGE_FONT).pack(pady=10,padx=10)
         
-        btn1 = tk.Button(self, width=40, height=3, text="Consultar Dicionário",
-                         command=lambda: controller.show_frame(C_D)).pack()
-        
-        btn2 = tk.Button(self, width=40, height=3, text="Adicionar Palavra",
-                         command=lambda: controller.show_frame(add_pal)).pack()
-        
-        btn3 = tk.Button(self, width=40, height=3, text="Excluir Palavra",
-                         command=lambda: controller.show_frame(exc_pal)).pack()
-        
-        btn_saida = tk.Button(self, width=25, height=2, text="Anterior",
-                         command=lambda: controller.show_frame(Home)).pack (side="bottom", anchor="sw")
+        btn1 = tk.Button(self, width=40, height=3, text="Consultar Dicionário",                                                         command=lambda: controller.show_frame(C_D)).pack()
+        btn2 = tk.Button(self, width=40, height=3, text="Adicionar Palavra",                                                         command=lambda: controller.show_frame(add_pal)).pack()
+        btn3 = tk.Button(self, width=40, height=3, text="Excluir Palavra",                                                         command=lambda: controller.show_frame(exc_pal)).pack()
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                          command=lambda: controller.show_frame(Home)).pack (side="bottom", anchor="sw")
 
-        
 # ADICIONAR PALAVRA #
 class add_pal(tk.Frame):
     def __init__(self, parent, controller): 
@@ -322,8 +466,7 @@ class add_pal(tk.Frame):
         tk.Entry(self, textvariable = word).pack()
         btn2 = tk.Button(self, text="Confirmar", command= op).pack()
         
-        btn_saida = tk.Button(self, width=25, height=2, text="Anterior",
-                        command=lambda: controller.show_frame(Dicionario)).pack (side="bottom", anchor="sw")
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                          command=lambda: controller.show_frame(Dicionario)).pack (side="bottom", anchor="sw")
 
 # EXCLUIR PALAVRA #
 class exc_pal(tk.Frame):
@@ -356,8 +499,7 @@ class exc_pal(tk.Frame):
         tk.Entry(self, textvariable = word).pack()
         btn2 = tk.Button(self, text="Confirmar", command= op).pack()
         
-        btn_saida = tk.Button(self, width=25, height=2, text="Anterior",
-                              command=lambda: controller.show_frame(Dicionario)).pack (side="bottom", anchor="sw")
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                          command=lambda: controller.show_frame(Dicionario)).pack (side="bottom", anchor="sw")
 
        
 # Consultar Dicionário #
@@ -366,14 +508,9 @@ class C_D(tk.Frame):
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, width=40, height= 3, text="Consultar Dicionário", font= LARGE_FONT).pack(pady=10,padx=10)
 
-        btn1 = tk.Button(self, width=40, height=3, text="Palavras Padrão",
-                         command=lambda: controller.show_frame(pal_pad)).pack()
-        
-        btn2 = tk.Button(self, width=40, height=3, text="Palavras Adicionadas",
-                         command=lambda: controller.show_frame(pal_add)).pack()
-        
-        btn_saida = tk.Button(self, width=25, height=2, text="Anterior",
-                         command=lambda: controller.show_frame(Dicionario)).pack(side="bottom", anchor="sw")
+        btn1 = tk.Button(self, width=40, height=3, text="Palavras Padrão",                                                          command=lambda: controller.show_frame(pal_pad)).pack()
+        btn2 = tk.Button(self, width=40, height=3, text="Palavras Adicionadas",                                                     command=lambda: controller.show_frame(pal_add)).pack()
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                      command=lambda: controller.show_frame(Dicionario)).pack(side="bottom", anchor="sw")
 
 # Bloco palavras padrão #
 class pal_pad(tk.Frame):
@@ -418,8 +555,7 @@ class pal_pad(tk.Frame):
         tk.Entry(self, textvariable = word).pack()
         btn2 = tk.Button(self, text="Confirmar", command= op).pack()
         
-        btn_saida = tk.Button(self, width=25, height=2, text="Anterior",
-                              command=lambda: controller.show_frame(Dicionario)).pack (side="bottom", anchor="sw")
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                          command=lambda: controller.show_frame(Dicionario)).pack (side="bottom", anchor="sw")
 
 
 # Aleatórias #
@@ -431,8 +567,7 @@ class pad_al(tk.Frame):
         f = open("pad_al.txt", "r").read()
         lb = tk.Label(self, text = f).pack()                                  
 
-        btn_saida = tk.Button(self, width=25, height=2, text="Anterior",
-                              command=lambda: controller.show_frame(pal_pad)).pack(side="bottom", anchor="sw")
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                  command=lambda: controller.show_frame(pal_pad)).pack(side="bottom", anchor="sw")
 # Fácil #
 class pad_fac(tk.Frame):
     def __init__(self, parent, controller):
@@ -442,8 +577,7 @@ class pad_fac(tk.Frame):
         f = open("pad_fac.txt", "r").read()
         lb = tk.Label(self, text = f).pack()                                  
 
-        btn_saida = tk.Button(self, width=25, height=2, text="Anterior",
-                              command=lambda: controller.show_frame(pal_pad)).pack(side="bottom", anchor="sw")
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                  command=lambda: controller.show_frame(pal_pad)).pack(side="bottom", anchor="sw")
 # Média #
 class pad_med(tk.Frame):
     def __init__(self, parent, controller):
@@ -453,8 +587,7 @@ class pad_med(tk.Frame):
         f = open("pad_med.txt", "r").read()
         lb = tk.Label(self, text = f).pack()                                  
 
-        btn_saida = tk.Button(self, width=25, height=2, text="Anterior",
-                              command=lambda: controller.show_frame(pal_pad)).pack(side="bottom", anchor="sw")
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                  command=lambda: controller.show_frame(pal_pad)).pack(side="bottom", anchor="sw")
 
 # Dificil #
 class pad_dif(tk.Frame):
@@ -465,8 +598,7 @@ class pad_dif(tk.Frame):
         f = open("pad_dif.txt", "r").read()
         lb = tk.Label(self, text = f).pack()                                  
 
-        btn_saida = tk.Button(self, width=25, height=2, text="Anterior",
-                              command=lambda: controller.show_frame(pal_pad)).pack(side="bottom", anchor="sw")
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                  command=lambda: controller.show_frame(pal_pad)).pack(side="bottom", anchor="sw")
 
 # Bloco palavras adicionadas #
 class pal_add(tk.Frame):
@@ -511,8 +643,7 @@ class pal_add(tk.Frame):
         tk.Entry(self, textvariable = word).pack()
         btn2 = tk.Button(self, text="Confirmar", command= op).pack()
         
-        btn_saida = tk.Button(self, width=25, height=2, text="Anterior",
-                              command=lambda: controller.show_frame(Dicionario)).pack (side="bottom", anchor="sw")
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                          command=lambda: controller.show_frame(Dicionario)).pack (side="bottom", anchor="sw")
 
 # Aleatorio #
 class add_al(tk.Frame):
@@ -523,8 +654,7 @@ class add_al(tk.Frame):
         f = open("add_al.txt", "r").read()
         lb = tk.Label(self, text = f).pack()                                  
 
-        btn_saida = tk.Button(self, width=25, height=2, text="Anterior",
-                              command=lambda: controller.show_frame(pal_add)).pack(side="bottom", anchor="sw")
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                  command=lambda: controller.show_frame(pal_add)).pack(side="bottom", anchor="sw")
 
 # Facil #
 class add_fac(tk.Frame):
@@ -535,8 +665,7 @@ class add_fac(tk.Frame):
         f = open("add_fac.txt", "r").read()
         lb = tk.Label(self, text = f).pack()
 
-        btn_saida = tk.Button(self, width=25, height=2, text="Anterior",
-                              command=lambda: controller.show_frame(pal_add)).pack(side="bottom", anchor="sw")
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                  command=lambda: controller.show_frame(pal_add)).pack(side="bottom", anchor="sw")
 
 # Media #
 
@@ -548,8 +677,7 @@ class add_med(tk.Frame):
         f = open("add_med.txt", "r").read()
         lb = tk.Label(self, text = f).pack()
 
-        btn_saida = tk.Button(self, width=25, height=2, text="Anterior",
-                              command=lambda: controller.show_frame(pal_add)).pack(side="bottom", anchor="sw")
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                  command=lambda: controller.show_frame(pal_add)).pack(side="bottom", anchor="sw")
 
 # Dificil #
 class add_dif(tk.Frame):
@@ -560,8 +688,7 @@ class add_dif(tk.Frame):
         f = open("add_dif.txt", "r").read()
         lb = tk.Label(self, text = f).pack()
 
-        btn_saida = tk.Button(self, width=25, height=2, text="Anterior",
-                              command=lambda: controller.show_frame(pal_add)).pack(side="bottom", anchor="sw")
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                  command=lambda: controller.show_frame(pal_add)).pack(side="bottom", anchor="sw")
 
 # Ajuda #
 class Ajuda(tk.Frame):
@@ -569,11 +696,8 @@ class Ajuda(tk.Frame):
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, width=40, height= 3, text="Ajuda", font= LARGE_FONT).pack(pady=10,padx=10)
         
-        btn = tk.Button(self, width=40, height=3, text="Perguntas Frequentes",
-                             command=lambda: controller.show_frame(P_F)).pack()
-        
-        btn_saida = tk.Button(self, width=25, height=2, text="Anterior",
-                              command=lambda: controller.show_frame(Home)).pack (side="bottom", anchor="sw")
+        btn = tk.Button(self, width=40, height=3, text="Perguntas Frequentes",                                               command=lambda: controller.show_frame(P_F)).pack()
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                        command=lambda: controller.show_frame(Home)).pack (side="bottom", anchor="sw")
 
 # Perguntas frequentes #
 class P_F(tk.Frame):
@@ -585,8 +709,7 @@ class P_F(tk.Frame):
         f = open("P_F.txt", "r").read()
         lb = tk.Label(self, text = f).pack()                                  
 
-        btn_saida = tk.Button(self, width=25, height=2, text="Anterior",
-                              command=lambda: controller.show_frame(Ajuda)).pack (side="bottom", anchor="sw")
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                         command=lambda: controller.show_frame(Ajuda)).pack (side="bottom", anchor="sw")
 
 # Creditos #
 class Creditos(tk.Frame):
@@ -594,17 +717,10 @@ class Creditos(tk.Frame):
         tk.Frame.__init__(self, parent)
         label = tk.Label(self, width=40, height=3, text="Créditos", font=LARGE_FONT).pack(pady=10,padx=10)
         
-        btn2 = tk.Button(self, width=40, height=3, text="Colaboradores",
-                         command=lambda: controller.show_frame(Colaboradores)).pack()
-        
-        btn3 = tk.Button(self, width=40, height=3, text="Agradecimentos",
-                         command=lambda: controller.show_frame(Agradecimentos)).pack()
-        
-        btn4 = tk.Button(self, width=40, height=3, text="Referências e bibliotecas",
-                         command=lambda: controller.show_frame(R_B)).pack()
-        
-        btn_saida = tk.Button(self, width=25, height=2, text="Anterior",
-                         command=lambda: controller.show_frame(Home)).pack (side="bottom", anchor="sw")
+        btn2 = tk.Button(self, width=40, height=3, text="Colaboradores",                                                                                 command=lambda: controller.show_frame(Colaboradores)).pack()
+        btn3 = tk.Button(self, width=40, height=3, text="Agradecimentos",                                                                                command=lambda: controller.show_frame(Agradecimentos)).pack()
+        btn4 = tk.Button(self, width=40, height=3, text="Referências e bibliotecas",                                                                     command=lambda: controller.show_frame(R_B)).pack()
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                        command=lambda: controller.show_frame(Home)).pack (side="bottom", anchor="sw")
 
 # Colaboradores #
 class Colaboradores(tk.Frame):
@@ -615,8 +731,7 @@ class Colaboradores(tk.Frame):
         f = open("colaboradores.txt", "r").read()
         lb = tk.Label(self, text = f).pack()                                  
 
-        btn_saida = tk.Button(self, width=25, height=2, text="Anterior",
-                         command=lambda: controller.show_frame(Creditos)).pack (side="bottom", anchor="sw")
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                         command=lambda: controller.show_frame(Creditos)).pack (side="bottom", anchor="sw")
 
 # Agradecimentos #
 class Agradecimentos(tk.Frame):
@@ -627,8 +742,7 @@ class Agradecimentos(tk.Frame):
         f = open("Agradecimentos.txt", "r").read()
         lb = tk.Label(self, text = f).pack()                                  
 
-        btn_saida = tk.Button(self, width=25, height=2, text="Anterior",
-                              command=lambda: controller.show_frame(Creditos)).pack (side="bottom", anchor="sw")
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                         command=lambda: controller.show_frame(Creditos)).pack (side="bottom", anchor="sw")
 
 # Referências e Bibliotecas #
 class R_B(tk.Frame):
@@ -639,8 +753,7 @@ class R_B(tk.Frame):
         f = open("R_B.txt", "r").read()
         lb = tk.Label(self, text = f).pack()                                  
 
-        btn_saida = tk.Button(self, width=25, height=2, text="Anterior",
-                              command=lambda: controller.show_frame(Creditos)).pack (side="bottom", anchor="sw")
+        btn_saida = tk.Button(self, width=15, text="Anterior",                                                                        command=lambda: controller.show_frame(Creditos)).pack (side="bottom", anchor="sw")
 
 # EXEMPLO DE CLASSE, CASO PRECISAR DE MAIS #
 class a (tk.Frame):
@@ -661,3 +774,4 @@ class a (tk.Frame):
 
 app = Master()
 app.mainloop()
+
