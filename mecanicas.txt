@@ -1,0 +1,24 @@
+	- Escolha de dificuldade: voce conseguira escolher, a partir do menu Dificuldade,
+as tres dificuldades "facil" , "medio" ou "dificil" . Podera tambem selecionar o modo 
+aleatorio, que engloba todas as palavras de todas as categorias.
+
+
+	- Dicionario padrao: o jogo possui uma vasta variedade de palavras pre-definidas 
+pelos desenvolvedores.
+
+
+	- Consulta ao dicionario: funcionalidade que voce podera consultar no dicionario
+as palavras padrao (adicionadas pelos desenvolvedores) ou as palavras adicionadas pelos
+usuarios, para saber se elas existem ou nao.
+
+
+	- Implementacao de palavras: feature que possibilita a adicao de palavras
+no codigo texto do jogo, para uma maior gama de possibilidades.
+
+
+	- Exclusao de palavras: assim como a implementacao, a exclusao permite que o
+usuario exclua palavras que ele mesmo adicionou.
+
+
+	- Perguntas frequentes: perguntas que normalmente aparecem quando apresentamos
+nosso programa para as pessoas.

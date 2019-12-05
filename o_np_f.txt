@@ -1,0 +1,19 @@
+	- Voce nao deve adicionar palavras compostas. 
+
+
+	- Voce nao deve, tambem, adicionar palavras com acento ou qualquer tipo de caracter
+especial. A interface grafica do tkinter nao permite essas formas. Caso contrario, ha risco do
+seu jogo apresentar falhas.
+
+	
+	- Voce nao pode deixar este arquivo e os outros arquivos em pastas diferentes.
+
+	
+	- Nao colocar numeros na adicao de palavras, pois alem de poder bugar o programa, tem o
+risco de nao conseguir encontra-la para apaga-la.
+	
+
+	- Por motivos obvios de competitividade, nao editar ou ler os arquivos texto implementados,
+ para o jogo nao perder a graca.
+
+	

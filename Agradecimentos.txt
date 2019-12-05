@@ -1,0 +1,33 @@
+Agradecimentos especiais ao Juliano, professor de computacao I, que propos esse
+trabalho que nos proporcionou muito aprendizado em uma biblioteca e funcionalidades de
+python ate entao desconhecidas por nos. Foi muito gratificante ver o jogo rodando apos 
+semanas de esforco.
+
+
+Agradecemos tambem ao Joao Pedro, monitor de computacao, que nos ajudou em alguns algoritmos
+de lista, busca e comparacao de palavras, o que nos ajudou imensamente.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+E tambem agradecemos ao santo Jobs por nao nos deixar perder a sanidade e quebrar a tela do 
+computador a cada erro que essa inteface grafica nos mostrou ser possivel de acontecer.

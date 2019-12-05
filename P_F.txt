@@ -1,18 +1,18 @@
--"Voces gostaram de fazer esse trabalho?"
-	- Apesar de diversas surras que tomamos da GIU, conseguimos sair vitoriosos e de 
-cabeca erguida.
-
-
--"Por que eu nao posso adicionar palavras com acento?"	
+-"Por que eu nao posso adicionar palavras com acento?"
 	- Se voce adicionar, o jogo em si corre risco de bugar quando for jogar, pois
 a interface grafica Tkinter, por algum motivo, nao consegue interpretar e, consequentemente,
 tem o risco do seu jogo ter caracteres estranhos como á, ô, õ, é, etc.
 
 
+-"Voces gostaram de fazer esse trabalho?"
+	- Apesar de diversas surras que tomamos da GUI, conseguimos sair vitoriosos e de 
+cabeca erguida.
 
-"O que levou voces a usar a interface grafica Tkinter?"	
-	-No comeco achavamos que seria simples e ficaria incrementado, afinal um simples menu e um jogo da forca nao devem ser tao dificil...
-quase 1000 linhas de codigo depois, percebemos que estavamos errados...
+
+"O que levou voces a usar a interface grafica Tkinter?"
+	- No comeco achavamos que seria simples e ficaria incrementado, afinal um simples menu e 
+um jogo da forca nao deve ser tao dificil...  quase 1000 linhas de codigo depois, percebemos 
+que estavamos MUITO errados...
 
 
 "Voces pensam em usar essa interface grafica novamente para futuros trabalhos?"

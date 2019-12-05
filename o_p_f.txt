@@ -1,0 +1,12 @@
+	- Depois que sua partida for finalizada, voce recebera um aviso se ganhou ou 
+perdeu. Se optar por continuar jogando, deve clicar no botao ao canto direito inferior
+para ser sorteada uma nova palavra, na mesma categoria que foi, anteriormente, informada.
+
+
+	- Voce pode ver na consulta a dicionario se uma palavra ja existe ou nao nas
+palavras padrao, para nao adicionar palavras repetidas ao arquivo de palavras adicionadas.
+
+
+	- Na adicao de palavras, use apenas letras, sem a adicao de numeros. E recomendado
+a adicao de palavras que condizem com o portugues, para nao complicar ainda mais as        
+tentativas de adivinhas
