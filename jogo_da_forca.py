@@ -522,6 +522,7 @@ class add_pal(tk.Frame):
             v_1 = principal.get()
             if v_1 == "A" or v_1 == "a":
                 palavra = word.get()
+                palavra = palavra.lower()
                 if insere_al(palavra)== False:
                     messagebox.showinfo("Sucesso","Palavra Adicionada")
                 else:
@@ -529,6 +530,7 @@ class add_pal(tk.Frame):
                     
             elif v_1 == "B" or v_1 == "b":
                 palavra = word.get()
+                palavra = palavra.lower()
                 if insere_fac(palavra)== False:
                     messagebox.showinfo("Sucesso","Palavra Adicionada")
                 else:
@@ -537,6 +539,7 @@ class add_pal(tk.Frame):
 
             elif v_1 == "C" or v_1 == "c":
                 palavra = word.get()
+                palavra = palavra.lower()
                 if insere_med(palavra)== False:
                     messagebox.showinfo("Sucesso","Palavra Adicionada")
                 else:
@@ -544,6 +547,7 @@ class add_pal(tk.Frame):
                     
             elif v_1 == "D" or v_1 == "d":
                 palavra = word.get()
+                palavra = palavra.lower()
                 if insere_dif(palavra)== False:
                     messagebox.showinfo("Sucesso","Palavra Adicionada")
                 else:
@@ -573,6 +577,7 @@ class exc_pal(tk.Frame):
             v_1 = principal.get()
             if v_1 == "A" or v_1 == "a":
                 palavra = word.get()
+                palavra = palavra.lower()
                 if exclui_al(palavra)== True:
                     messagebox.showinfo("Sucesso","Palavra Excluída")
                 else:
@@ -580,6 +585,7 @@ class exc_pal(tk.Frame):
                     
             elif v_1 == "B" or v_1 == "b":
                 palavra = word.get()
+                palavra = palavra.lower()
                 if exclui_fac(palavra)== True:
                     messagebox.showinfo("Sucesso","Palavra Excluída")
                 else:
@@ -588,6 +594,7 @@ class exc_pal(tk.Frame):
 
             elif v_1 == "C" or v_1 == "c":
                 palavra = word.get()
+                palavra = palavra.lower()
                 if exclui_med(palavra)== True:
                     messagebox.showinfo("Sucesso","Palavra Excluída")
                 else:
@@ -595,6 +602,7 @@ class exc_pal(tk.Frame):
                     
             elif v_1 == "D" or v_1 == "d":
                 palavra = word.get()
+                palavra = palavra.lower()
                 if exclui_dif(palavra)== True:
                     messagebox.showinfo("Sucesso","Palavra Excluída")
                 else:
