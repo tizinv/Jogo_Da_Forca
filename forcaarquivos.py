@@ -79,7 +79,7 @@ def forcacompara():
                 if(letra in lista[l]):
                     listaposi.append(l)
             print(listaposi)
-            print("deucertopourra")
+            print("deucerto")
             for posi in listaposi:
                 listaprint[posi]=letra
         print(listaprint)
