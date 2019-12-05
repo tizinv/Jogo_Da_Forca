@@ -217,7 +217,6 @@ class Jogar_al(tk.Frame):
         lista = list(lista_pad) + list(lista_add)
         lista_palavras_al = tira_n_line(lista)
         
-        print (lista_palavras_al)
         
         photos = [tk.PhotoImage(file="0_erro.png"),tk.PhotoImage(file="1_erro.png"),tk.PhotoImage(file="2_erro.png"),
                   tk.PhotoImage(file="3_erro.png"),tk.PhotoImage(file="4_erro.png"),tk.PhotoImage(file="5_erro.png"),
@@ -229,7 +228,7 @@ class Jogar_al(tk.Frame):
             erros = 0
             imgLabel.config(image=photos[0])
             palavra = random.choice(lista_palavras_al)
-            print(palavra)
+            
             palavra_underline_al = " ".join(palavra)
             lblWord.set(" ".join("_"*len(palavra)))
 
@@ -270,7 +269,7 @@ class Jogar_al(tk.Frame):
 
         n=0
         for c in ascii_lowercase:
-            tk.Button(self, text=c, command=lambda c=c: guess(c), font= ("Helvetica 18"), width=6).grid(row= 1+n//9, column=n%9, columnspan=1, rowspan=1)
+            tk.Button(self, text=c, command=lambda c=c: guess(c), font= ("Helvetica 18"), width=6).grid(row= 1+n//9, column=n%9, columnspan=1, rowspan=1,padx=10)
             n += 1
 
 
@@ -290,7 +289,7 @@ class Jogar_fac(tk.Frame):
         lista = list(lista_pad) + list(lista_add)
         lista_palavras_fac = tira_n_line(lista)
         
-        print (lista_palavras_fac)
+        
         
         photos = [tk.PhotoImage(file="0_erro.png"),tk.PhotoImage(file="1_erro.png"),tk.PhotoImage(file="2_erro.png"),
                   tk.PhotoImage(file="3_erro.png"),tk.PhotoImage(file="4_erro.png"),tk.PhotoImage(file="5_erro.png"),
@@ -302,7 +301,7 @@ class Jogar_fac(tk.Frame):
             erros = 0
             imgLabel.config(image=photos[0])
             palavra = random.choice(lista_palavras_fac)
-            print(palavra)
+            
             palavra_underline_fac = " ".join(palavra)
             lblWord.set(" ".join("_"*len(palavra)))
 
@@ -364,7 +363,7 @@ class Jogar_med(tk.Frame):
         lista = list(lista_pad) + list(lista_add)
         lista_palavras_med = tira_n_line(lista)
         
-        print (lista_palavras_med)
+        
         
         photos = [tk.PhotoImage(file="0_erro.png"),tk.PhotoImage(file="1_erro.png"),tk.PhotoImage(file="2_erro.png"),
                   tk.PhotoImage(file="3_erro.png"),tk.PhotoImage(file="4_erro.png"),tk.PhotoImage(file="5_erro.png"),
@@ -376,7 +375,7 @@ class Jogar_med(tk.Frame):
             erros = 0
             imgLabel.config(image=photos[0])
             palavra = random.choice(lista_palavras_med)
-            print(palavra)
+            
             palavra_underline_med = " ".join(palavra)
             lblWord.set(" ".join("_"*len(palavra)))
 
@@ -437,7 +436,7 @@ class Jogar_dif(tk.Frame):
         lista = list(lista_pad) + list(lista_add)
         lista_palavras_dif = tira_n_line(lista)
         
-        print (lista_palavras_dif)
+        
         
         photos = [tk.PhotoImage(file="0_erro.png"),tk.PhotoImage(file="1_erro.png"),tk.PhotoImage(file="2_erro.png"),
                   tk.PhotoImage(file="3_erro.png"),tk.PhotoImage(file="4_erro.png"),tk.PhotoImage(file="5_erro.png"),
@@ -449,7 +448,7 @@ class Jogar_dif(tk.Frame):
             erros = 0
             imgLabel.config(image=photos[0])
             palavra = random.choice(lista_palavras_dif)
-            print(palavra)
+            
             palavra_underline_dif = " ".join(palavra)
             lblWord.set(" ".join("_"*len(palavra)))
 
@@ -523,18 +522,35 @@ class add_pal(tk.Frame):
             v_1 = principal.get()
             if v_1 == "A" or v_1 == "a":
                 palavra = word.get()
-                insere_al(palavra)
+                if insere_al(palavra)== False:
+                    messagebox.showinfo("Sucesso","Palavra Adicionada")
+                else:
+                    messagebox.showinfo("Erro","Palavra ja existe nas palavras adicionadas")
+                    
             elif v_1 == "B" or v_1 == "b":
-                palavra = word.get() 
-                insere_fac(palavra)
+                palavra = word.get()
+                if insere_fac(palavra)== False:
+                    messagebox.showinfo("Sucesso","Palavra Adicionada")
+                else:
+                    messagebox.showinfo("Erro","Palavra ja existe nas palavras adicionadas")
+                    
+
             elif v_1 == "C" or v_1 == "c":
-                palavra = word.get() 
-                insere_med(palavra)
+                palavra = word.get()
+                if insere_med(palavra)== False:
+                    messagebox.showinfo("Sucesso","Palavra Adicionada")
+                else:
+                    messagebox.showinfo("Erro","Palavra ja existe nas palavras adicionadas")
+                    
             elif v_1 == "D" or v_1 == "d":
-                palavra = word.get() 
-                insere_dif(palavra)
+                palavra = word.get()
+                if insere_dif(palavra)== False:
+                    messagebox.showinfo("Sucesso","Palavra Adicionada")
+                else:
+                    messagebox.showinfo("Erro","Palavra ja existe nas palavras adicionadas")
+
             else:
-                op()
+                messagebox.showinfo("Erro","Categoria não identificada")
 
         label = tk.Label(self, width=40, height= 2, text="Categorias:", font= LARGE_FONT).pack()
         label1 = tk.Label(self, width=40, height= 2, text="ALEATÓRIO(A), FACEIS(B)", font= LARGE_FONT).pack()
@@ -546,8 +562,8 @@ class add_pal(tk.Frame):
         tk.Entry(self, textvariable = word).pack()
         btn2 = tk.Button(self, text="Confirmar", command= op).pack()
         
-        btn_saida = tk.Button(self, width=25, height = 2, text="Anterior",
-                              command=lambda: controller.show_frame(Dicionario)).pack(side="bottom")
+        btn_saida = btn_saida = tk.Button(self, width=25, height = 2, text="Anterior",
+                              command=lambda: controller.show_frame(Dicionario)).pack (side="bottom", anchor="sw")
 
 # EXCLUIR PALAVRA #
 class exc_pal(tk.Frame):
@@ -557,18 +573,36 @@ class exc_pal(tk.Frame):
             v_1 = principal.get()
             if v_1 == "A" or v_1 == "a":
                 palavra = word.get()
-                exclui_al(palavra)
+                if exclui_al(palavra)== True:
+                    messagebox.showinfo("Sucesso","Palavra Excluída")
+                else:
+                    messagebox.showinfo("Erro","Palavra não existe para ser excluida")
+                    
             elif v_1 == "B" or v_1 == "b":
-                palavra = word.get() 
-                exclui_fac(palavra)
+                palavra = word.get()
+                if exclui_fac(palavra)== True:
+                    messagebox.showinfo("Sucesso","Palavra Excluída")
+                else:
+                    messagebox.showinfo("Erro","Palavra não existe para ser excluida")
+                    
+
             elif v_1 == "C" or v_1 == "c":
-                palavra = word.get() 
-                exclui_med(palavra)
+                palavra = word.get()
+                if exclui_med(palavra)== True:
+                    messagebox.showinfo("Sucesso","Palavra Excluída")
+                else:
+                    messagebox.showinfo("Erro","Palavra não existe para ser excluida")
+                    
             elif v_1 == "D" or v_1 == "d":
-                palavra = word.get() 
-                exclui_dif(palavra)
+                palavra = word.get()
+                if exclui_dif(palavra)== True:
+                    messagebox.showinfo("Sucesso","Palavra Excluída")
+                else:
+                    messagebox.showinfo("Erro","Palavra não existe para ser excluida")
+
             else:
-                op()
+                messagebox.showinfo("Erro","Categoria não identificada")
+                
 
         label = tk.Label(self, width=40, height= 2, text="Categorias:", font= LARGE_FONT).pack()
         label1 = tk.Label(self, width=40, height= 2, text="ALEATÓRIO(A), FACEIS(B)", font= LARGE_FONT).pack()
@@ -580,8 +614,8 @@ class exc_pal(tk.Frame):
         tk.Entry(self, textvariable = word).pack()
         btn2 = tk.Button(self, text="Confirmar", command= op).pack()
         
-        btn_saida = tk.Button(self, width=25, height = 2, text="Anterior",
-                              command=lambda: controller.show_frame(Dicionario)).pack()
+        btn_saida = btn_saida = tk.Button(self, width=25, height = 2, text="Anterior",
+                              command=lambda: controller.show_frame(Dicionario)).pack (side="bottom", anchor="sw")
 
        
 # Consultar Dicionário #
@@ -597,7 +631,7 @@ class C_D(tk.Frame):
                          command=lambda: controller.show_frame(pal_add)).pack()
         
         btn_saida = tk.Button(self, width=25, height = 2, text="Anterior",
-                         command=lambda: controller.show_frame(Dicionario)).pack(side="bottom")
+                         command=lambda: controller.show_frame(Dicionario)).pack()
 
 # Bloco palavras padrão #
 class pal_pad(tk.Frame):
