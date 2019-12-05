@@ -17,7 +17,7 @@ class Master(tk.Tk):
         
         tk.Tk.__init__(self, *args, **kwargs)
         container = tk.Frame(self)
-
+        self.title("Jogo da Forca")
         container.pack(side="top", fill="both", expand = True)
 
         container.grid_rowconfigure(0, weight=1)
