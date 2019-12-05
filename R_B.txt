@@ -1,0 +1,10 @@
+Alguns foruns do stackoverflow.com e videos do youtube nos ajudaram bastante, e tambem
+
+sites como:	https://www.tutorialspoint.com/python3/python_gui_programming.htm
+		https://pythonspot.com/tkinter/
+		https://docs.python.org/3/library/tk.html
+
+
+
+As bibliotecas usadas foram Tkinter, funcoes adicionadas por nos e bibliotecas nativas
+do python.

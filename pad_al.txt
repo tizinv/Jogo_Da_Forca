@@ -5,6 +5,7 @@ extrator
 preparar
 submeter
 pinturas
+manicure
 pescoco
 cimento
 funil
@@ -23,6 +24,7 @@ tonelada
 programa
 biquini
 geometria
+prejuizo
 fechado
 catalunha
 ladrao
@@ -38,7 +40,7 @@ fogao
 formal
 estanho
 magnetismo
-schwarzenegger
+schwazzenegger
 audiofone
 sufragismo
 supersticiosismo
@@ -69,7 +71,6 @@ mosaico
 transporte
 assassinato
 anticonstitucionalissimamente
-pneumoultramicroscopicossilicovulcanoconiotico
 taciturno
 tergiversar
 ufanismo
@@ -117,7 +118,6 @@ rapido
 imitacao
 mergulhador
 anacronismo
-hipopotomonstrosesquipedaliofobia
 oftalmotorrinolaringologista
 cineangiocoronariográfico
 dacriocistossiringotomia
@@ -155,6 +155,7 @@ estocar
 elastico
 closet
 manicure
+falsificacao
 ciencia
 quimica
 fisica
@@ -191,6 +192,7 @@ panteao
 chaleira
 motocicleta
 encorajar
+inconsciente
 refletir
 informador
 cirurgia
@@ -216,6 +218,7 @@ mercenario
 mercenaria
 discar
 medianeira
+submergir
 supermercado
 colesterol
 campanario
@@ -416,4 +419,3 @@ colorado
 reclinar
 estrangeiro
 seguranca
-

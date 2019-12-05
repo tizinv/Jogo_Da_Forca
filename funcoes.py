@@ -16,7 +16,7 @@ def exclui_al(palavra):
         arq[i] += '\n'
     
     file.close()
-    exclui0(ifpop,arq)
+    return exclui0(ifpop,arq)
 
 def exclui0(ifpop,arq):
     file = open("add_al.txt","w")
@@ -24,11 +24,11 @@ def exclui0(ifpop,arq):
         for i in range(len(arq)):
             
             file.write(arq[i])
-        print("Palavra excluida das aleatórias.")
+        return True
 
   
     else:
-        print("Palavra nao existe nas aleatórias para ser excluida.")
+        return False
         
 def exclui_fac(palavra):
     file = open("add_fac.txt","r")
@@ -50,7 +50,7 @@ def exclui_fac(palavra):
         arq[i] += '\n'
     
     file.close()
-    exclui1(ifpop,arq)
+    return exclui1(ifpop,arq)
 
 def exclui1(ifpop,arq):
     file = open("add_fac.txt","w")
@@ -58,11 +58,11 @@ def exclui1(ifpop,arq):
         for i in range(len(arq)):
             
             file.write(arq[i])
-        print("Palavra excluida das fáceis.")
+        return True
 
   
     else:
-        print("Palavra nao existe nas fáceis para ser excluida.")
+        return False
 
 def exclui_med(palavra):
     file = open("add_med.txt","r")
@@ -84,7 +84,7 @@ def exclui_med(palavra):
         arq[i] += '\n'
     
     file.close()
-    exclui2(ifpop,arq)
+    return exclui2(ifpop,arq)
 
 def exclui2(ifpop,arq):
     file = open("add_med.txt","w")
@@ -92,11 +92,11 @@ def exclui2(ifpop,arq):
         for i in range(len(arq)):
             
             file.write(arq[i])
-        print("Palavra excluida das médias.")
+        return True
 
   
     else:
-        print("Palavra nao existe nas médias para ser excluida.")
+        return False
 
 def exclui_dif(palavra):
     file = open("add_dif.txt","r")
@@ -118,7 +118,7 @@ def exclui_dif(palavra):
         arq[i] += '\n'
     
     file.close()
-    exclui3(ifpop,arq)
+    return exclui3(ifpop,arq)
 
 def exclui3(ifpop,arq):
     file = open("add_dif.txt","w")
@@ -126,11 +126,11 @@ def exclui3(ifpop,arq):
         for i in range(len(arq)):
             
             file.write(arq[i])
-        print("Palavra excluida nas difíceis.")
+        return True
 
   
     else:
-        print("Palavra nao existe nas difíceis para ser excluida.")
+        return False
 
 ###############################################################
 ###############################################################
@@ -139,9 +139,9 @@ def insere_al(palavra): #verifica se existe ou não a palavra no dicionário#
     
     if verif_add_al(palavra) == False:
         file1.write(palavra+'\n')
-        print("Palavra adicionada nos aleatórios.") 
+        return False
     else:
-        print("A palavra já existe nos aleatórios.")
+        return True
 
     file1.close()
         
@@ -151,9 +151,9 @@ def insere_fac(palavra): #verifica se existe ou não a palavra no dicionário#
     
     if verif_add_fac(palavra) == False:
         file1.write(palavra+'\n')
-        print("Palavra adicionada nas fáceis.") 
+        return False 
     else:
-        print("A palavra já existe nas fáceis.")
+        return True
 
     file1.close()
 
@@ -163,9 +163,9 @@ def insere_med(palavra): #verifica se existe ou não a palavra no dicionário#
     
     if verif_add_med(palavra) == False:
         file1.write(palavra+'\n')
-        print("Palavra adicionada nas médias.") 
+        return False 
     else:
-        print("A palavra já existe nas médias.")
+        return True
 
     file1.close()
     
@@ -173,11 +173,11 @@ def insere_dif(palavra): #verifica se existe ou não a palavra no dicionário#
     
     file1 = open("add_dif.txt","a")
     
-    if verif__add_dif(palavra) == False:
+    if verif_add_dif(palavra) == False:
         file1.write(palavra+'\n')
-        print("Palavra adicionada nas difíceis.") 
+        return False
     else:
-        print("A palavra já existe nas difíceis.")
+        return True
 
     file1.close()
         
